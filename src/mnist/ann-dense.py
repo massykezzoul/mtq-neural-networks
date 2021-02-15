@@ -16,6 +16,12 @@ import requests
 requests.packages.urllib3.disable_warnings()
 import ssl
 
+# Clustering
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+#%matplotlib inline
+
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -92,13 +98,41 @@ else:
 
     model.save(model_name)
 
-model.evaluate(
-    x_test,
-    y_test
-)
+    model.evaluate(
+        x_test,
+        y_test
+    )
 
 first_hidden_layer = model.layers[0]
 extractor = keras.Model(inputs=model.inputs,
                             outputs=[first_hidden_layer.output])
 features= extractor(x_train) # sorties du premiers hidden layers 
 print(features)
+
+
+# Clustering
+
+hidden_output = features.numpy()
+# flatten the np array
+x = hidden_output.reshape(-1, 16 * len(x_train))
+y = np.array([j+1 for i in range(len(x_train)) for j in range(16)])
+
+data_set = np.dstack((x,y))
+data_set = data_set[0]
+cluster = KMeans(3).fit(data_set)
+
+print(cluster.cluster_centers_)
+
+for point in data_set:
+    if cluster.predict(point.reshape(1,-1)) == [0]:
+        plt.scatter(point[0], point[1], c='b')
+    elif cluster.predict(point.reshape(1,-1)) == [1]:
+        plt.scatter(point[0], point[1], c='g')
+    elif cluster.predict(point.reshape(1,-1)) == [2]:
+        plt.scatter(point[0], point[1], c='r')
+ 
+for center in model.cluster_centers_:
+    plt.scatter(center[0],center[1])
+plt.show()
+
+sys.exit(0)
