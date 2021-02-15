@@ -12,6 +12,18 @@ from tensorflow.keras.layers import Activation, Dense
 from tensorflow.keras.optimizers import Adam
 
 import os.path
+import requests
+requests.packages.urllib3.disable_warnings()
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    # Legacy Python that doesn't verify HTTPS certificates by default
+    pass
+else:
+    # Handle target environment that doesn't support HTTPS verification
+    ssl._create_default_https_context = _create_unverified_https_context
 
 # Prend les images et ne garder que les images ne contenant que des 0, 1 et des 2
 # Afin de simplifier l'étude.
