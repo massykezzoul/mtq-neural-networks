@@ -75,16 +75,30 @@ x_test = x_test.reshape((-1, 784))
 y_train = keras.utils.to_categorical(y_train, 10)
 y_test = keras.utils.to_categorical(y_test, 10)
 
-# Creating the model
-model = Sequential([
-    Dense(16, input_shape=(784,), activation='relu'),
-    Dense(10, activation='softmax')
-])
-#model.summary()
-model.compile(optimizer=Adam(learning_rate=0.0001), loss='mean_squared_error', metrics=['accuracy'])
-model.fit(x=x_train, y=y_train,batch_size=12, epochs=15, verbose=2)
+model_name = "./trained_model_1_16"
+
+if (os.path.isdir(model_name)):
+    model = keras.models.load_model(model_name)
+else:
+    # Creating the model
+    model = Sequential([
+        Dense(16, input_shape=(784,), activation='relu'),
+        Dense(10, activation='softmax')
+    ])
+
+    model.compile(optimizer=Adam(learning_rate=0.0001), loss='mean_squared_error', metrics=['accuracy'])
+    model.fit(x=x_train, y=y_train,batch_size=12, epochs=15, verbose=2)
+    #model.summary()
+
+    model.save(model_name)
 
 model.evaluate(
     x_test,
     y_test
 )
+
+first_hidden_layer = model.layers[0]
+extractor = keras.Model(inputs=model.inputs,
+                            outputs=[first_hidden_layer.output])
+features= extractor(x_train) # sorties du premiers hidden layers 
+print(features)
