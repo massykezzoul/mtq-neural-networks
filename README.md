@@ -16,6 +16,18 @@ valeur ?
 * doc: Bibliographie
 * src: code sources des différents réseaux 
 
+## Outils utilisés
+
+L'implémentation des divers modèles s'est faite principalement en [Python3](https://www.python.org/download/releases/3.0/).
+Afin de faciliter l'implémentation et la visualisation des résultats, plusieurs modules python et autres projets sont utiliser au sein de ce projet.
+
+- [scikit-learn](https://scikit-learn.org/stable/) inclus dans [TensorFlow](https://www.tensorflow.org/)
+- [Pandas](https://pandas.pydata.org/) et [Matplotlib](https://matplotlib.org/stable/index.html)
+- [Jupyter](https://jupyter.org/install)
+
+## Prise en main
+
+
 ## Membres
 
 - Kezzoul Massili 

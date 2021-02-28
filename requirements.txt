@@ -2,3 +2,8 @@ sklearn
 tensorflow
 pandas
 matplotlib
+IPython
+jupyterlab
+notebook
+umap-learn
+umap-learn[plot]
