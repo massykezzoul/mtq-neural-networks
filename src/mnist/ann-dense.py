@@ -1,21 +1,12 @@
 import numpy as np
-
-from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Activation, Dense
-from tensorflow.keras.optimizers import Adam
-
-import os.path
 import sys
-
+# our functions
+from tools import buildmodel as mtq
+import mnist
 # Clustering
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-
-# our functions
-import mnist
 
 # MacOS support
 import ssl
@@ -31,48 +22,33 @@ else:
 
 save_dir="./mnist-dataset/"
 (x_train , y_train) , (x_test, y_test) = mnist.load_mnist(save_dir)
+y_train_origin = y_train
+y_test_origin = y_test
 x_train , y_train = mnist.normalize_dataset(x_train, y_train)
 x_test, y_test = mnist.normalize_dataset(x_test, y_test)
 
-print("Len of train dataset : ", len(x_train))
-print("Len of test dataset : ", len(x_test))
+print("size of the train dataset : ", len(x_train))
 
 model_name = "./trained_model_1_16"
 
-if (os.path.isdir(model_name)):
-    model = keras.models.load_model(model_name)
-else:
-    # Creating the model
-    model = Sequential([
-        Dense(16, input_shape=(784,), activation='relu'),
-        Dense(2, activation='softmax')
-    ])
+model = mtq.MTQModel(model_name)
+load = True
+model.build_dense((784,), n_neurons=[32,64, len(y_train[0])], load=load, summary=True)
+if not load:
+    model.fit(x_train,y_train)
 
-    model.compile(optimizer=Adam(learning_rate=0.0001), loss='mean_squared_error', metrics=['accuracy'])
-    model.fit(x=x_train, y=y_train,batch_size=12, epochs=15, verbose=2)
-    #model.summary()
+hidden_layers = model.get_hidden_layers_outputs(x_test)
 
-    model.save(model_name)
+# UMAP
+import umap.umap_
+import umap.plot
 
-    model.evaluate(
-        x_test,
-        y_test
-    )
+umap.plot.output_notebook()
+hover_data = pd.DataFrame({'index':np.arange(len(x_test)),
+                           'label':y_test_origin})
+for hd in hidden_layers:    
+    mapper = umap.umap_.UMAP().fit(hd)
+    #p = umap.plot.interactive(mapper, labels=y_test_origin, hover_data=hover_data)
+    #umap.plot.show(p)
 
-first_hidden_layer = model.layers[0]
-extractor = keras.Model(inputs=model.inputs,
-                            outputs=[first_hidden_layer.output])
-first_hidden_output = extractor(x_train) # sorties du premiers hidden layers 
-print(first_hidden_output)
-
-
-# Clustering
-cluster = KMeans(3).fit(first_hidden_output)
-y_kmeans = cluster.predict(first_hidden_output)
-
-plt.scatter(first_hidden_output[:, 0], first_hidden_output[:, 1], c=y_kmeans, s=50, cmap='viridis')
-
-centers = cluster.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
-
-plt.show()
+    umap.plot.points(mapper, labels=y_test_origin)

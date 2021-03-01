@@ -47,13 +47,12 @@ def load_mnist(save_dir="./mnist-dataset/"):
 
 def normalize_dataset(x_train, y_train):
     # Scale images to the [0, 1] range
-    x_train = x_train.astype("float32") / 255
-
+    x_train = x_train.astype("float32") / np.amax(x_train)
     # Flatten the images.
-    x_train = x_train.reshape((-1, 784))
+    x_train = x_train.reshape((-1, len(x_train[0]) * len(x_train[0][0])))
 
     # convert class vectors to binary class matrices
-    # Ex: 2 will become [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
-    y_train = keras.utils.to_categorical(y_train, 2)
+    # Ex: 1 will become [0, 1]
+    y_train = keras.utils.to_categorical(y_train, len(np.unique(y_train)))
 
     return x_train , y_train
