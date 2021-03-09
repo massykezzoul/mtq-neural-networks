@@ -35,6 +35,12 @@ class MTQModel():
         if save:
             self.model.save(self.model_name)
 
+    def predict(self, x):
+        return self.model.predict(x)
+
+    def evaluate(self, x, y, verbose=0):
+        return self.model.evaluate(x,y,verbose=verbose)
+
     def get_model(self):
         return self.model
 
