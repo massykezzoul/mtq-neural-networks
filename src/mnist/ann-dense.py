@@ -48,7 +48,7 @@ hover_data = pd.DataFrame({'index':np.arange(len(x_test)),
                            'label':y_test_origin})
 for hd in hidden_layers:    
     mapper = umap.umap_.UMAP().fit(hd)
-    #p = umap.plot.interactive(mapper, labels=y_test_origin, hover_data=hover_data)
+    p = umap.plot.interactive(mapper, labels=y_test_origin, hover_data=hover_data)
     #umap.plot.show(p)
 
     umap.plot.points(mapper, labels=y_test_origin)
