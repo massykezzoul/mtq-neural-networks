@@ -26,6 +26,7 @@ def normalize_dataset(x_train, y_train):
 
     # convert class vectors to binary class matrices
     # Ex: 1 will become [0, 1] if len(np.unique(y_train))==2
-    y_train = keras.utils.to_categorical(y_train)
+
+    y_train = np.array(list(map(lambda x:  [1 if x == k else 0 for k in np.sort(np.unique(y_train))], y_train)))
 
     return x_train , y_train
