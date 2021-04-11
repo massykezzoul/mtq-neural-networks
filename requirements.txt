@@ -7,3 +7,4 @@ jupyterlab
 notebook
 umap-learn
 umap-learn[plot]
+plotly
