@@ -63,9 +63,8 @@ def get_preditions(model, x, keep, verbose=False):
 def get_best_k(hidden_layers, kmax=7, verbose=False):
     best_k = []
 
-    if verbose:
-        fig, axes = plt.subplots(nrows=len(hidden_layers), ncols=2, sharex=True)
-        fig.set_size_inches(15, 9)
+    fig, axes = plt.subplots(nrows=len(hidden_layers), ncols=2, sharex=True)
+    fig.set_size_inches(15, 9)
 
     for x, ax in zip(hidden_layers,axes):
         sil = []
@@ -105,6 +104,8 @@ def get_best_k(hidden_layers, kmax=7, verbose=False):
     if verbose: #Verbose
         print("Best K values: ", best_k)
         plt.show()
+    else:
+        plt.close()
     
     return best_k
 

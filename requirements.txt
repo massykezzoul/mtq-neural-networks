@@ -8,3 +8,6 @@ notebook
 umap-learn
 umap-learn[plot]
 plotly
+ipywidgets
+google-cloud
+voila
