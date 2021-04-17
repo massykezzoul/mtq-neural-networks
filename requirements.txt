@@ -11,3 +11,4 @@ plotly
 ipywidgets
 google-cloud
 voila
+ipywidgets-bokeh

@@ -117,19 +117,36 @@ def clustering(hidden_layers, best_k):
 
     return y_kmeans
 
-def umap_plot(x, labels, predictions, hidden_layers, clusters):
-    umap.plot.output_notebook()
-    hover_data = pd.DataFrame({'index': np.arange(len(x)),
-                                'label': labels,
-                                'prediction': predictions
-                                })
+def umap_plot(x, labels, predictions, hidden_layers, clusters, colorscale):
+    traces = []
 
-    for hd, cluster in zip(hidden_layers,clusters):    
-        plt.figure(figsize=(15, 5))
-        mapper = umap.umap_.UMAP().fit(hd)
-        hover_data['kmeans'] = cluster
-        p = umap.plot.interactive(mapper, labels=cluster, hover_data=hover_data,width=800,height=300)
-        umap.plot.show(p)
+    for hd,clus in zip(hidden_layers,clusters):
+        plot = umap.umap_.UMAP().fit_transform(hd)
+        traces.append(go.Scatter(x=plot[:,0], y=plot[:,1], mode='markers', 
+                        marker={'color': np.array(clus)+1, 
+                        'cmin': colorscale['cmin'], 'cmax': colorscale['cmax'],
+                        'colorscale': colorscale['colorscale'], 'showscale': False,
+                        'colorbar': {'tickvals': [0, 1, 2], 'ticktext': ['None', 'Red', 'Blue']}},
+                        customdata=np.stack((labels, predictions, clus), axis=-1),
+                        hovertemplate='<b>label:%{customdata[0]}</b><br>Prediction:%{customdata[1]}<br>Clustering: %{customdata[2]}'
+                        ))
+    return traces
+
+# Build colorscale
+
+def parcats(labels, keep, best_k, clustering, predictions, colorscale):
+    #categorical_dimensions = ['Input'] + ['Hidden Layer '+str(i+1) for i in range(k)] + ['Output']
+
+    dimensions = [dict(values=labels, label='Input')]
+    for idx, cluster in enumerate(clustering):
+        dimensions.append(dict(values=cluster, label='Hidden Layer '+str(idx+1)))
+    dimensions += [dict(values=predictions, label='Output')]
+
+    return go.Parcats(domain={'y': [0, 0.4]}, dimensions=dimensions,
+                   line={'colorscale': colorscale['colorscale'], 'cmin': colorscale['cmin'],
+                   'cmax': colorscale['cmax'], 'color': colorscale['color'], 'shape': 'hspline'})
+
+    
 
 def sankey(labels, keep, best_k, clustering, predictions):
     # sankey data conversion
@@ -168,7 +185,7 @@ def sankey(labels, keep, best_k, clustering, predictions):
         label = value
     )
 
-    data=[go.Sankey(node=node, link=link)]
+    return go.Sankey(node=node, link=link)
     fig = go.Figure(data=data)
 
     fig.update_layout(title_text="Sankey Diagram", font_size=15)
