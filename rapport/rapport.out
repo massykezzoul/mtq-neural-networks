@@ -1,0 +1,25 @@
+\BOOKMARK [0][-]{chapter.1}{Organisation du projet}{}% 1
+\BOOKMARK [1][-]{section.1.1}{M\351thodes d\220organisation}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{D\351coupage du projet}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Phase d'analyse des donn\351es}{section.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.2.2}{Phase de d\351veloppement}{section.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.2.3}{Phase d'analyse et pr\351sentation des r\351sultats}{section.1.2}% 6
+\BOOKMARK [1][-]{section.1.3}{Outils de collaboration}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Introduction au sujet}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Les r\351seaux de neurones pronfonds}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Jeux de donn\351es}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{MNIST}{section.2.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Travail \340 r\351aliser}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.4}{Technologies utilis\351es}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.4.1}{Jupyter notebook}{section.2.4}% 14
+\BOOKMARK [2][-]{subsection.2.4.2}{Keras}{section.2.4}% 15
+\BOOKMARK [0][-]{chapter.3}{Analyse des donn\351es}{}% 16
+\BOOKMARK [0][-]{chapter.4}{D\351veloppement de l\220architecture}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Mod\350les d'apprentissage}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{Extraction des signatures}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{Interface de visualisation}{chapter.4}% 20
+\BOOKMARK [0][-]{chapter.5}{Analyse des r\351sultats}{}% 21
+\BOOKMARK [0][-]{appendix.A}{Annexe}{}% 22
+\BOOKMARK [1][-]{section.A.1}{...}{appendix.A}% 23
+\BOOKMARK [1][-]{section.A.2}{...}{appendix.A}% 24
+\BOOKMARK [0][-]{appendix.B}{Bibliographie}{}% 25

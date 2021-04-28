@@ -29,12 +29,11 @@ def pretraitement(x_train_origin, y_train_origin, x_test_origin, y_test_origin, 
     
     return (x_train, y_train), (x_test, y_test)
 
-def trained_model(x, y, hidden_layers=[32, 64], model_name="./models/trained_model_2_16",verbose=False):
+def trained_model(x, y, hidden_layers=[32, 64], model_name="./models/trained_model_2_16",verbose=False, load=False):
     model = mtq.MTQModel(model_name)
 
     input_shape = x[0].shape
     n_neurons= hidden_layers + [len(y[0])]
-    load=False # Construit le modèle
     
     if verbose:
         print('- input_shape: ', input_shape)
@@ -135,8 +134,6 @@ def umap_plot(x, labels, predictions, hidden_layers, clusters, colorscale):
 # Build colorscale
 
 def parcats(labels, keep, best_k, clustering, predictions, colorscale):
-    #categorical_dimensions = ['Input'] + ['Hidden Layer '+str(i+1) for i in range(k)] + ['Output']
-
     dimensions = [dict(values=labels, label='Input')]
     for idx, cluster in enumerate(clustering):
         dimensions.append(dict(values=cluster, label='Hidden Layer '+str(idx+1)))

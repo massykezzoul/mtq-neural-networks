@@ -30,11 +30,11 @@ Afin de faciliter l'implémentation et la visualisation des résultats, plusieur
 
 ## Membres
 
-- Kezzoul Massili 
-- Elhouiti Chakib
 - Bouzidi Belkassem
-- Zeroual Ramzi
 - Dadi Mélissa
+- Elhouiti Chakib
+- Kezzoul Massili 
+- Zeroual Ramzi
 
 Encadrant: Pascal poncelet <Pascal.Poncelet@lirmm.fr>
 
