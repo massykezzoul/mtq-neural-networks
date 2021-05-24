@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score,adjusted_rand_score,adjusted_mutual_info_score
+import json 
 
 # our functions
 from tools import buildmodel as mtq
@@ -187,3 +188,14 @@ def sankey(labels, keep, best_k, clustering, predictions):
 
     fig.update_layout(title_text="Sankey Diagram", font_size=15)
     fig.show()
+
+def saveJson(filename, dictionary_data):
+    a_file = open(filename, "w")
+    json.dump(dictionary_data, a_file)
+    a_file.close()
+
+def loadJson(filename):
+    a_file = open(filename, "r").read()
+    output = json.loads(a_file)
+    return output
+
