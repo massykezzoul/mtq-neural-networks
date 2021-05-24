@@ -380,6 +380,36 @@ Afin d'abstraire l'utilisation des réseaux de neurones dans notre Notebook Jupy
 \section{Extraction des signatures}
 
 \section{Interface de visualisation}
+Pour pouvoir voir, analyser, evaluer et faire des expérimentations sur nos modèles, il faut avoir une interface de visualisation qui permet la projection des differentes visualisation des données et de pouvoir faire le lien entre ces visualisations.
+Notre but était de pouvoir projeter le résultats de nos extractions de signatures avec UMAP et le diagramme de Sankey et de pouvoir selectionner un ou plusieurs élements à partir de UMAP pour suivre sa ligne dans le diagramme de Sankey et vice versa.
+Pour enfin réaliser une application web qui nous permet de faire plusieurs expérimentations, on va commencer par découvrir ce qui est UMAP et le diagramme de Sankey.
+\subsection{UMAP (Uniform Manifold Approximation and Projection)}
+La réduction de dimensionnalité est un outil puissant permettant aux praticiens de l'apprentissage automatique de visualiser et de comprendre des ensembles de données volumineux et de grande dimension. L'une des techniques de visualisation les plus largement utilisées est UMAP.
+UMAP, à sa base  utilise des algorithmes de mise en page graphique pour organiser les données dans un espace de faible dimension. Dans le sens le plus simple, UMAP construit une représentation graphique de haute dimension des données puis l'optimise en un graphique de faible dimension pour être aussi structurellement similaire que possible. Dans notre cas, on va passer de 32 et 64 dimensions à 2 dimensions.
+\begin{figure}[!h]
+	\center
+	\includegraphics[width=0.8\textwidth]{img/UMAP.png}
+	\caption{UMAP visualisation}
+\end{figure}
+
+\subsection{Diagramme de Sankey}
+Un diagramme de Sankey est un type de diagramme de flux dans lequel la largeur des flèches est proportionnelle au flux représenté. 
+Les diagrammes de Sankey visualisent les contributions à un flux en définissant la source pour représenter le nœud source, la cible pour le nœud cible, la valeur pour définir le volume du flux et le label indiquant le nom du nœud. Dans notre cas, on a utilisé le diagramme de Sankey pour visualiser le chemin de chaque donnée (image), en démarrant de l'input layer, en passant de son cluster de chaque couche cachée du modèle et en arrivant à l'output layer (la prédiction).
+
+\begin{figure}[!h]
+	\center
+	\includegraphics[width=0.8\textwidth]{img/sankey.png}
+	\caption{Exemple diagramme de Sankey}
+\end{figure}
+
+\subsection{Application web}
+Pour concevoir une application web, on a utilisé l'outil \textit{Voilà}, qui permet de transformer un notebook jupyter en une application web autonome. Nous sommes parties d'un notebook présentant les différentes visualisations afin de générer une page web.
+
+
+
+
+Voilà permet aussi de changer l'interface graphique de la page d'accueil grâce à des templates, on a donc créer notre propre template pour avoir une page d'accueil personnalisée à notre goût, qui présente nos differentes expérimentations.
+
 
 % ------------------------------------- %
 % Analyse des résultats
