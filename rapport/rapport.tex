@@ -105,7 +105,7 @@
 	\vspace{2cm}
 	{\Large\itshape
 		Belkassim BOUZIDI \\
-    Mélissa DADI \\
+    	Mélissa DADI \\
 		Chakib ELHOUITI \\
 		Massili KEZZOUL \\
 		Ramzi ZEROUAL \\
@@ -115,7 +115,7 @@
 
 	{\Large\itshape
 		Encadrant :\par
-		M\up{r} Pascal \textsc{Poncelet}
+		M. Pascal \textsc{Poncelet}
 		\par}
 
 	\vspace{2cm}
@@ -151,11 +151,11 @@
 
 	Tout d'abord nous souhaitons adresser nos remerciements au corps professoral et administratif de la faculté des sciences de Montpellier qui déploient des efforts pour assurer à leurs étudiants une formation actualisée.
 
-	En second lieu, nous tenons à remercier notre encadrant M\up{r} Pascal \textsc{Poncelet} pour ses précieux conseils et son aide durant toute la période de travail.
+	En second lieu, nous tenons à remercier notre encadrant M. Pascal \textsc{Poncelet} pour ses précieux conseils et son aide durant toute la période de travail.
 
 	Nos vifs remerciements vont également aux membres du jury pour l’intérêt qu’ils ont porté à notre projet en acceptant d’examiner notre travail.
 
-	Nous remercions M\up{r} Yahia Zeroual pour sa relecture attentive de ce rapport.
+	Nous remercions M. Yahia Zeroual pour sa relecture attentive de ce rapport.
 
 \end{center}
 \vspace{\stretch{1}}
@@ -165,6 +165,92 @@
 
 % Espacement entre les paragraphes
 \parskip=5pt
+
+
+% ------------------------------------- %
+% Introduction au sujet
+% ------------------------------------- %
+
+\chapter{Introduction au sujet}
+
+\section{Les réseaux de neurones pronfonds}
+
+En termes simples, le Deep Learning est le domaine où les machines apprennent par elles-mêmes en imitant le cerveau humain. Imiter dans le sens, les machines peuvent effectuer des tâches nécessitant une intelligence humaine. Maintenant, comprenons comment?
+
+\begin{figure}[!h]
+	\begin{center}
+		 \includegraphics[width=0.7\textwidth]{img/intro1.png}
+		 \caption{}
+	\end{center}
+\end{figure}
+
+Le cerveau humain peut facilement différencier un chat et un chien.
+
+\begin{figure}[!h]
+	\begin{center}
+		 \includegraphics[width=0.7\textwidth]{img/intro2.png}
+		 \caption{}
+	\end{center}
+\end{figure}
+
+Mais comment faire différencier une machine entre un chat et un chien?
+
+\begin{figure}[!h]
+	\begin{center}
+		 \includegraphics[width=0.7\textwidth]{img/intro3.png}
+		 \caption{}
+	\end{center}
+\end{figure}
+
+La majorité des méthodes d'apprentissage profond utilisent des architectures de réseau neuronal et c'est pourquoi les modèles d'apprentissage profond sont également  connus sous le nom de réseaux neuronaux profonds.
+Un processus d'apprentissage en profondeur se compose de deux phases clés: l’entrainement et l'inférence. 
+
+La phase d' entrainement peut être considérée comme un processus d'étiquetage d'énormes quantités de données et d'identification de leurs caractéristiques correspondantes. Ici, le système compare ces caractéristiques et les mémorise pour arriver à des conclusions correctes lorsqu'il rencontre des données similaires la prochaine fois.
+
+Au cours de la phase d'inférence, le modèle tire des conclusions et étiquette les données non exposées à l'aide des connaissances acquises précédemment.
+
+\paragraph{Des exemples : }
+
+Un grand nombre d'industries utilisent le deep learning pour tirer parti de ses avantages. Jetons un coup d'œil à quelques-uns d'entre eux.
+
+\begin{description}
+	\item[Électronique] l'apprentissage en profondeur est utilisé dans la traduction automatique de la parole. Vous pouvez penser aux appareils d'assistance à domicile qui répondent à votre voix et comprennent vos préférences.
+	\item[Conduite automatisée] grâce à l'apprentissage en profondeur, les chercheurs automobiles sont désormais en mesure de détecter automatiquement des objets tels que les feux de signalisation, les panneaux d'arrêt, etc. Ils l'utilisent également pour détecter les piétons, ce qui contribue à réduire les accidents.
+	\item[Recherche médicale] l'apprentissage en profondeur est utilisé par les chercheurs en cancérologie pour détecter automatiquement les cellules cancéreuses.
+\end{description}
+
+Si les réseaux de neurones profonds obtiennent souvent des  bons résultats, ils ont cependant un point faible : leur fonctionnement apparaît comme bien plus opaque. Un phénomène appelé « boîte noire » (« black box » en anglais), dans le sens où l'on peut juger des données qui entrent dans la boîte et des résultats qui en sortent, mais sans savoir ce qui se passe à l'intérieur.
+
+\section{Jeu de données}
+
+Nous avons choisis d'utilisé la base de données MNIST\footnote{Modified ou Mixed National Institute of Standards and Technology} comme jeu de données. L'ensemble de données MNIST est l'un des ensembles de données les plus couramment utilisés pour la classification d'images et accessible à partir de nombreuses sources différentes. Tensorflow nous permet d'importer et de télécharger le jeu de données directement depuis leur API.
+
+La base de données MNIST, une extension de la base de données NIST, est une collection de données de faible complexité de chiffres manuscrits utilisés pour entraîner divers algorithmes d'apprentissage automatique supervisées. MNIST est considéré comme le \textit{Hello world} de l'apprentissage automatique.
+
+MNIST est un ensemble de données étiqueté qui associe des images de chiffres écrits à la main avec la valeur du chiffre respectif. Elle contient 70 000 images en noir et blanc de 28x28 pixels représentant des chiffres de zéro à neuf. Chaque pixel de l'image est un entier de valeur comprise entre 0 et 255 représentant le niveau de gris.
+
+\begin{figure}[!h]
+	\begin{center}
+		 \includegraphics[width=0.7\textwidth]{img/mnist.png}
+		 \caption{Exemple de quelques éléments de la base de données MNIST}
+	\end{center}
+\end{figure}
+
+\section{Problèmatique}
+
+L'objectif du projet est d'essayer de mieux comprendre le fonctionnement interne d'un réseau de neurones. Il s'agit de repérer, selon les données d'entrée, des signatures d'activation de neurones. Une signature correspond au pattern (ou chemin) emprunté par un objet au sein du réseau avant d'arriver à une conclusion. Concrètement, on veut analyser les différentes signatures obtenues par différents types de données et de modèles.
+
+Par exemple, si on entraîne un modèle à reconnaître des images de \textit{chiens} et de \textit{chats}, on voudrait répondre aux questions suivantes :
+
+\begin{itemize}
+	\item À partir de quelle couche le modèle change de comportement pour reconnaître une image ?
+	\item Les signatures des images de \textit{chats}, sont-elles différentes de ceux des \textit{chiens} ?
+	\item Si on passe une image de \textit{voiture} au modèle, à quoi va ressembler sa signature ?
+\end{itemize}
+
+\section{Solution proposée}
+
+Dans un premier temps, on doit se familiariser avec la base de données MNIST et développer plusieurs outils afin de les manipuler. Ensuite, nous passerons à la construction des modèles d'apprentissage pour pouvoir analyser leurs comportements internes en récupérant les soties de chaque couche cachée. À partir de ces sorties, l'objectif sera d'extraire les signatures grâce à des algorithmes de \textit{clustering}\footnote{Méthode en analyse des données. Elle vise à diviser un ensemble de données en différents paquets (\textit{clusters}) tel que chaque sous-ensemble partagent des caractéristiques communes.}. Enfin, nous réaliserons une interface de visualisation afin d'analyser les résultats et de répondre aux questions posées ci-dessus.
 
 % ------------------------------------- %
 % Organisation
@@ -177,7 +263,7 @@ Afin de mener à bien le développement du projet, nous avons décidé de travai
 
 Ainsi, selon l'état de progression du projet, nous réalisâmes les tâches en retard durant le week-end pour ne pas cumuler de retard et respecter l'intégralité du cahier des charges.
 
-Toutes les deux semaines, nous nous sommes réunis avec notre encadrant, M\up{r} Pascal \textsc{Poncelet}. Lors de ces réunions de mises au point relatifs au projet, de précieux conseils nous furent prodigués.
+Toutes les deux semaines, nous nous sommes réunis avec notre encadrant, M. Pascal \textsc{Poncelet}. Lors de ces réunions de mises au point relatifs au projet, de précieux conseils nous furent prodigués.
 
 \section{Découpage du projet}
 
@@ -193,7 +279,7 @@ Durant cette phase, nous avons commencé à implémenter plusieurs modèles d'ap
 
 \subsection{Phase d'analyse et présentation des résultats}
 
-Cette étape a consisté en l'analyse des résultats obtenues durant la phase précédente. Nous nous sommes aussi penché sur la réalisation d'une interface Web paramétrable afin d'effectuer des expérimentations et de pouvoir, le plus intuitivement possible, visualiser les résultats.
+Cette étape a consisté en l'analyse des résultats obtenues durant la phase précédente. Nous nous sommes aussi penché sur la réalisation d'une interface web afin d'effectuer des expérimentations et de pouvoir, le plus intuitivement possible, visualiser les résultats.
 
 \section{Outils de collaboration}
 
@@ -216,44 +302,39 @@ En ce qui concerne la rédaction de ce rapport, nous avons utilisé \LaTeX, syst
 \end{figure}
 
 % ------------------------------------- %
-% Introduction au sujet
-% ------------------------------------- %
-
-\chapter{Introduction au sujet}
-
-\section{Les réseaux de neurones pronfonds}
-
-Détailer vite fais le fonctionnement du deep learning (Pour qu'un simple lecteur comprenne le fonctionnement de base)
-
-finir par parler de la boite noir.
-
-\section{Jeux de données}
-
-\subsection{MNIST}
-
-\section{Travail à réaliser}
-
-L'objectif du TER est de mieux comprendre le fonctionnement interne d'un réseau de neurones. Concrètement, il s'agit de repérer, selon les données d'entrée, des signatures d'activation de neurones. Pour cela, nous devons répondre aux questions telles que :
-
-\begin{itemize}
-	\item Si le jeu d'apprentissage ne contient que des 1 et des 3 quels sont les neurones qui sont activés ?
-	\item Existe-t-il des signatures caractéristiques de certaines données ?
-	\item A partir de quelle couche le modèle change de comportement pour reconnaître une valeur ?
-\end{itemize}
-
-Dans un premier temps, on doit se familiariser avec la base de données MNIST et développer plusieurs outils afin de les manipuler. Ensuite, nous passerons à la construction des modèles d'apprentissage pour pouvoir analyser leurs comportements internes en récupérant les soties de chaque couche cachée. Enfin, nous réaliserons une interface de visualisation afin d'analyser les résultats.
-
-\section{Technologies utilisées}
-
-\subsection{Jupyter notebook}
-
-\subsection{Keras}
-
-% ------------------------------------- %
 % Analyse des données
 % ------------------------------------- %
 
+
 \chapter{Analyse des données}
+
+En récupérant les données brutes de \textit{MNIST}, qui sont des images de 28x28px stockées sous la forme d'une matrice de 2 dimension, avec une valeur entre 0 et 255 pour chaque case. Il est clair \textbf{qu'on peut pas} passer ces données à un réseau de neurones, vu que le réseau de neurones prends en input layer un tableau à une seule dimension.
+Pour pouvoir traiter, entrainer et visualiser ces données, on a mis en place une série de prétraitements.
+
+\section{Prétraitements} 
+
+\subsection{Découpage des données}
+
+Cette partie se résume par la fonction \textit{cut\_data}, qui nous permet de découper les données et garder un nombre précis d'images pour un ensemble de chiffres définis. Par exemple, on peut garder 100 images réprésentants des 0 et des 1 (100 pour chaque chiffre). On a réaliser cette fonction pour faciliter la pahse de développement et de pouvoir mieux visualiser les résultats sur un petit ensemble de données.
+
+\subsection{Scaling, Flattening}
+
+La phase de prétraitements est la plus importante dans le processus de création d’un réseau neuronal. Pour cela, on a mis en place 
+la fonction \textit{normalize\_dataset} qui fait, en premier du Scaling (standirisation ou normalisation et c'est ce qu'on a utilisé dans notre cas), qui consiste à mettre les valeurs des images entre 0 et 1 au lieu de 0 et 255, cela va permettre a notre modèle de converger rapidement. Ensuite on a applatis les images pour avoir un tableau d'une seule dimension au lieu d'une matrice à deux dimension (du Flattening). En dernier on a transformé les labels correspendant à chaque image en un vecteur contenant que des 0 et des 1 et d'une taille égale au nombre de labels unique à garder (ex: 1,3,7), on mettra un 1 à la case du label correspendant et des 0 aux autres cases, on commence en premier par trier les labels à garder pour avoir un ordre croissant avec les indices du vecteur. Par exemple, si on décide de garder que les images représentants les 1, les 3 et les 7, on aura des vecteurs de taille 3 de la forme suivante : 
+
+\begin{itemize}
+	\item pour un 1 $\implies$ [1,0,0].
+	\item pour un 3 $\implies$ [0,1,0].
+	\item pour un 7 $\implies$ [0,0,1].
+\end{itemize}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{img/normalisation.png}
+	\end{center}
+	\caption{Scaling}
+\end{figure}
+
 
 % ------------------------------------- %
 % Développement
@@ -261,7 +342,40 @@ Dans un premier temps, on doit se familiariser avec la base de données MNIST et
 
 \chapter{Développement de l’architecture}
 
+\section{Technologies utilisées}
+
+\subsection{Jupyter notebook}
+
+\subsection{Keras}
+
 \section{Modèles d'apprentissage}
+
+Avant toute chose, il nous faut commencer par définir un réseau de neurones. Nous avons eu le choix entre plusieurs types de réseau. Ils diffèrent par plusieurs paramètres :
+
+\begin{itemize}
+	\item la topologie des connexions entre les neurones;
+	\item la fonction d’agrégation utilisée (somme pondérée, distance pseudo-euclidienne...) ;
+	\item et bien d'autres paramètres qui nous serons pas très utiles dans le déroulé de ce projet.
+\end{itemize}
+
+Nous avons choisis de commencer par utilisé un réseau à maillage \textit{dense} et avec des paramètres de base. Ceci afin de simplifier, dans un premier temps, les expérimentations. Un réseaux à maillage \textit{dense} est un réseau tel que chaque neurone d'une couche est relié à tous les neurones de la couche précédente et de la couche suivante.
+
+\begin{figure}[!h]
+	\center
+	\includegraphics[width=0.7\textwidth]{img/ann-dense.jpg}
+	\caption{Réseau de neurones à maillage \textit{dense}}
+\end{figure}
+
+
+Puis, dans un deuxième temps nous pourons changer de modèle afin de passer à un réseaux de neurones à convolution\footnote{Le CNN est un type de réseau de neurones artificiels acycliques, dans lequel le motif de connexion entre les neurones est inspiré par le cortex visuel des animaux}(ou CNN). Ils consistent en un empilage multicouche de perceptrons, dont le but est de prétraiter de petites quantités d'informations. Les réseaux neuronaux convolutifs ont de larges applications dans la reconnaissance d'image et vidéo.
+
+\begin{figure}[!h]
+	\center
+	\includegraphics[width=0.8\textwidth]{img/cnn.png}
+	\caption{Réseau de neurones à convolution}
+\end{figure}
+
+Afin d'abstraire l'utilisation des réseaux de neurones dans notre Notebook Jupyter, nous avons définis une classe Python paramètrabke qui se charge de construire un modèle et de l'entraîner
 
 \section{Extraction des signatures}
 
