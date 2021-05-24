@@ -346,7 +346,20 @@ la fonction \textit{normalize\_dataset} qui fait, en premier du Scaling (standir
 
 \subsection{Jupyter notebook}
 
+Les notebooks Jupyter offrent un excellent moyen d'écrire et d'itérer sur du code Python. C'est un outil incroyablement puissant pour développer et présenter de manière interactive des projets de science de données. Jupyter notebook intègre le code et sa sortie dans un document unique qui combine des visualisations, du texte, des équations mathématiques et d'autres médias riches. Le flux de travail intuitif favorise un développement itératif et rapide, faisant de Jupyter notebook un choix de plus en plus populaire au cœur de la communauté de la science des données contemporaine et de l'analyse des données.
+
+\subsection{Tensorflow}
+
+Ce serait un défi de nos jours de trouver un ingénieur en apprentissage automatique qui n'a rien entendu sur TensorFlow. Initialement créé par l'équipe Google Brain à des fins internes, telles que le filtrage du spam sur Gmail, il est devenu open-source en 2015.
+
+Tensorflow est souvent utilisé pour résoudre des problèmes d'apprentissage profond et pour la formation et l'évaluation des processus jusqu'au déploiement du modèle. Outre les objectifs d'apprentissage automatique, TensorFlow peut également être utilisé pour créer des simulations, basées sur des équations dérivées partielles. C'est pourquoi il est considéré comme un outil polyvalent pour les ingénieurs en apprentissage automatique.
+
 \subsection{Keras}
+
+Keras est une API de réseau neuronal open source écrite en Python. Il peut fonctionner sur plusieurs frameworks d'apprentissage en profondeur et d'apprentissage automatique, notamment TensorFlow, Microsoft Cognitive Tool (CNTK) et Theano.
+Keras est une interface plutôt qu'un framework autonome comme TensorFlow. Il offre des abstractions intuitives de haut niveau qui permettent une expérimentation rapide.
+
+Keras est utilisé par environ 200 000 utilisateurs, allant des chercheurs universitaires et des ingénieurs des startups et des grandes entreprises aux étudiants diplômés et aux amateurs. Keras est utilisé chez Google, Netflix, Uber, Microsoft, Square et de nombreuses startups travaillant sur la grande variété de problèmes d'apprentissage automatique.
 
 \section{Modèles d'apprentissage}
 
@@ -364,6 +377,7 @@ Nous avons choisis de commencer par utilisé un réseau à maillage \textit{dens
 	\center
 	\includegraphics[width=0.7\textwidth]{img/ann-dense.jpg}
 	\caption{Réseau de neurones à maillage \textit{dense}}
+	\label{dense}
 \end{figure}
 
 
@@ -375,9 +389,25 @@ Puis, dans un deuxième temps nous pourons changer de modèle afin de passer à 
 	\caption{Réseau de neurones à convolution}
 \end{figure}
 
-Afin d'abstraire l'utilisation des réseaux de neurones dans notre Notebook Jupyter, nous avons définis une classe Python paramètrabke qui se charge de construire un modèle et de l'entraîner
+Afin d'abstraire l'utilisation des réseaux de neurones dans notre Notebook Jupyter, nous avons définis une classe Python (nomée \textit{MTQModel}) paramètrable qui se charge de construire un modèle, de l'entraîner et d'éxtraire les signatures. Point qu'on va aborder plus en détails dans la section qui suit.
 
-\section{Extraction des signatures}
+\section{Signature}
+
+Nous avons définis un réseau de neurones à maillage \textit{dense} avec deux couches cachées, comme à la figure \ref{dense}. La première couche cachée est composée de 32 neurones, la deuxième de 64. Une image qui traverse ce réseau laisse une signature $S$ qu'on peut définir comme un vecteur $H_1$ de 32 valeurs, associées à la première couche et un vecteur $H_2$ de 64 valeurs, associées à la deuxième couche. La signature d'une image dans un réseau est donc définis ainsi : $ S = (H_1, H_2)$
+
+Afin d'éxtraire la signature de chaque image, nous avons intègrer une méthode à notre classe Python \textit{MTQModel}\footnote{La méthode en question s'appelle \textit{get\_hidden\_layers\_outputs(x)}} qui permet de le faire automatiquement pour chaque image du \textit{dataset}.
+
+\subsection{Clustering}
+
+Une fois la signature des images extraite, nous passons à l'analyse de ces dernières. Pour cela, nous utilsant un algorithme de \textit{clustering}\footnote{ou le \href{https://fr.wikipedia.org/wiki/Partitionnement_de_donn\%C3\%A9es}{Partitionnement de données} en français}, le \textbf{K-means}. Ce dernier prends en paramètres les données et un certain $K$ donnée par l'utilisateur, puis construit $K$ clusters qui regroupent les données qui sont proches\footnote{Proche en terme de distance euclidienne}.
+
+\begin{figure}[!h]
+	\center
+	\includegraphics[width=0.8\textwidth]{img/kmeans.png}
+	\caption{Clustering en action}
+\end{figure}
+
+Afin de choisir un $K$ optimal, nous avons utilisé la méthode \textit{Silhouette} qui consiste à calculer, pour chaque $K$ de 2 à 10, la moyenne du score \textit{Silhouette} du clustering. Le meilleur $K$ étant celui qui donne la meilleur moyenne. Le score \textit{Silhouette} $ s(i) $ mesure combien un point est proche de son cluster comparer aux autres clusters\footnote{C'est pour cela que $ K $ doit être supérieur ou égal à 2}. Concrétement, le score d'un point $i$ est $ s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))} $ avec $a(i)$ est la mesure de la similarité du point $i$ avec son cluster et $b(i)$ le mesure de dissemblance du point $i$ par rapport aux autre clusters.
 
 \section{Interface de visualisation}
 Pour pouvoir voir, analyser, evaluer et faire des expérimentations sur nos modèles, il faut avoir une interface de visualisation qui permet la projection des differentes visualisation des données et de pouvoir faire le lien entre ces visualisations.
