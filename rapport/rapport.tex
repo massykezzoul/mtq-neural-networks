@@ -175,7 +175,8 @@
 
 \section{Les réseaux de neurones pronfonds}
 
-En termes simples, le Deep Learning est le domaine où les machines apprennent par elles-mêmes en imitant le cerveau humain. Imiter dans le sens, les machines peuvent effectuer des tâches nécessitant une intelligence humaine. Maintenant, comprenons comment?
+En termes simples, le Deep Learning est le domaine où les machines apprennent par elles-mêmes en imitant le cerveau humain. Imiter dans le sens où les machines peuvent effectuer des tâches nécessitant une intelligence humaine. Maintenant, comprenons comment ?
+
 
 \begin{figure}[!h]
 	\begin{center}
@@ -193,8 +194,7 @@ Le cerveau humain peut facilement différencier un chat et un chien.
 	\end{center}
 \end{figure}
 
-Mais comment faire différencier une machine entre un chat et un chien?
-
+Mais comment faire différencier une machine entre un chat et un chien ?
 \begin{figure}[!h]
 	\begin{center}
 		 \includegraphics[width=0.7\textwidth]{img/intro3.png}
@@ -202,8 +202,8 @@ Mais comment faire différencier une machine entre un chat et un chien?
 	\end{center}
 \end{figure}
 
-La majorité des méthodes d'apprentissage profond utilisent des architectures de réseau neuronal et c'est pourquoi les modèles d'apprentissage profond sont également  connus sous le nom de réseaux neuronaux profonds.
-Un processus d'apprentissage en profondeur se compose de deux phases clés: l’entrainement et l'inférence. 
+La majorité des méthodes d'apprentissage profond utilisent des architectures de réseau neuronal et c'est pourquoi les modèles d'apprentissage profond sont également connus sous le nom de réseaux neuronaux profonds.
+Un processus d'apprentissage en profondeur se compose de deux phases clé : l’entraînement et l'inférence.
 
 La phase d' entrainement peut être considérée comme un processus d'étiquetage d'énormes quantités de données et d'identification de leurs caractéristiques correspondantes. Ici, le système compare ces caractéristiques et les mémorise pour arriver à des conclusions correctes lorsqu'il rencontre des données similaires la prochaine fois.
 
@@ -219,15 +219,15 @@ Un grand nombre d'industries utilisent le deep learning pour tirer parti de ses 
 	\item[Recherche médicale] l'apprentissage en profondeur est utilisé par les chercheurs en cancérologie pour détecter automatiquement les cellules cancéreuses.
 \end{description}
 
-Si les réseaux de neurones profonds obtiennent souvent des  bons résultats, ils ont cependant un point faible : leur fonctionnement apparaît comme bien plus opaque. Un phénomène appelé « boîte noire » (« black box » en anglais), dans le sens où l'on peut juger des données qui entrent dans la boîte et des résultats qui en sortent, mais sans savoir ce qui se passe à l'intérieur.
+Si les réseaux de neurones profonds obtiennent souvent des bons résultats, ils ont cependant un point faible : leur fonctionnement apparaît comme bien plus opaque. Un phénomène appelé « boîte noire » (« black box » en anglais), dans le sens où l'on peut juger des données qui entrent dans la boîte et des résultats qui en sortent, mais sans savoir ce qui se passe à l'intérieur.
 
 \section{Jeu de données}
 
-Nous avons choisis d'utilisé la base de données MNIST\footnote{Modified ou Mixed National Institute of Standards and Technology} comme jeu de données. L'ensemble de données MNIST est l'un des ensembles de données les plus couramment utilisés pour la classification d'images et accessible à partir de nombreuses sources différentes. Tensorflow nous permet d'importer et de télécharger le jeu de données directement depuis leur API.
+Nous avons choisi d'utiliser la base de données MNIST\footnote{Modified ou Mixed National Institute of Standards and Technology} comme jeu de données. L'ensemble de données MNIST est l'un des ensembles de données les plus couramment utilisés pour la classification d'images et accessible à partir de nombreuses sources différentes. Tensorflow nous permet d'importer et de télécharger le jeu de données directement depuis leur API.
 
 La base de données MNIST, une extension de la base de données NIST, est une collection de données de faible complexité de chiffres manuscrits utilisés pour entraîner divers algorithmes d'apprentissage automatique supervisées. MNIST est considéré comme le \textit{Hello world} de l'apprentissage automatique.
 
-MNIST est un ensemble de données étiqueté qui associe des images de chiffres écrits à la main avec la valeur du chiffre respectif. Elle contient 70 000 images en noir et blanc de 28x28 pixels représentant des chiffres de zéro à neuf. Chaque pixel de l'image est un entier de valeur comprise entre 0 et 255 représentant le niveau de gris.
+MNIST est un ensemble de données étiqueté qui associe des images de chiffres écrits à la main avec la valeur du chiffre respectif. Elle contient 70 000 images en noir et blanc de 28 x 28 pixels représentant des chiffres de zéro à neuf. Chaque pixel de l'image est un entier de valeur comprise entre 0 et 255 représentant le niveau de gris.
 
 \begin{figure}[!h]
 	\begin{center}
@@ -263,7 +263,7 @@ Afin de mener à bien le développement du projet, nous avons décidé de travai
 
 Ainsi, selon l'état de progression du projet, nous réalisâmes les tâches en retard durant le week-end pour ne pas cumuler de retard et respecter l'intégralité du cahier des charges.
 
-Toutes les deux semaines, nous nous sommes réunis avec notre encadrant, M. Pascal \textsc{Poncelet}. Lors de ces réunions de mises au point relatifs au projet, de précieux conseils nous furent prodigués.
+Toutes les deux semaines, nous nous sommes réunis avec notre encadrant, M. Pascal \textsc{Poncelet}. Lors de ces réunions de mises au point relatif au projet, de précieux conseils nous furent prodigués.
 
 \section{Découpage du projet}
 
@@ -308,7 +308,7 @@ En ce qui concerne la rédaction de ce rapport, nous avons utilisé \LaTeX, syst
 
 \chapter{Analyse des données}
 
-En récupérant les données brutes de \textit{MNIST}, qui sont des images de 28x28px stockées sous la forme d'une matrice de 2 dimension, avec une valeur entre 0 et 255 pour chaque case. Il est clair \textbf{qu'on peut pas} passer ces données à un réseau de neurones, vu que le réseau de neurones prends en input layer un tableau à une seule dimension.
+En récupérant les données brutes de \textit{MNIST}, qui sont des images de 28 x 28 pixels stockées sous la forme d'une matrice de 2 dimension, avec une valeur entre 0 et 255 pour chaque case. Il est clair \textbf{qu'on peut pas} passer ces données à un réseau de neurones, vu que le réseau de neurones prends en input layer un tableau à une seule dimension.
 Pour pouvoir traiter, entrainer et visualiser ces données, on a mis en place une série de prétraitements.
 
 \section{Prétraitements} 
