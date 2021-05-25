@@ -17,15 +17,17 @@
 \BOOKMARK [0][-]{chapter.4}{D\351veloppement de l\220architecture}{}% 17
 \BOOKMARK [1][-]{section.4.1}{Technologies utilis\351es}{chapter.4}% 18
 \BOOKMARK [2][-]{subsection.4.1.1}{Jupyter notebook}{section.4.1}% 19
-\BOOKMARK [2][-]{subsection.4.1.2}{Keras}{section.4.1}% 20
-\BOOKMARK [1][-]{section.4.2}{Mod\350les d'apprentissage}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.3}{Extraction des signatures}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.4}{Interface de visualisation}{chapter.4}% 23
-\BOOKMARK [2][-]{subsection.4.4.1}{UMAP \(Uniform Manifold Approximation and Projection\)}{section.4.4}% 24
-\BOOKMARK [2][-]{subsection.4.4.2}{Diagramme de Sankey}{section.4.4}% 25
-\BOOKMARK [2][-]{subsection.4.4.3}{Application web}{section.4.4}% 26
-\BOOKMARK [0][-]{chapter.5}{Analyse des r\351sultats}{}% 27
-\BOOKMARK [0][-]{appendix.A}{Annexe}{}% 28
-\BOOKMARK [1][-]{section.A.1}{...}{appendix.A}% 29
-\BOOKMARK [1][-]{section.A.2}{...}{appendix.A}% 30
-\BOOKMARK [0][-]{appendix.B}{Bibliographie}{}% 31
+\BOOKMARK [2][-]{subsection.4.1.2}{Tensorflow}{section.4.1}% 20
+\BOOKMARK [2][-]{subsection.4.1.3}{Keras}{section.4.1}% 21
+\BOOKMARK [1][-]{section.4.2}{Mod\350les d'apprentissage}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.3}{Signature}{chapter.4}% 23
+\BOOKMARK [2][-]{subsection.4.3.1}{Clustering}{section.4.3}% 24
+\BOOKMARK [1][-]{section.4.4}{Interface de visualisation}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.4.1}{UMAP \(Uniform Manifold Approximation and Projection\)}{section.4.4}% 26
+\BOOKMARK [2][-]{subsection.4.4.2}{Diagramme de Sankey}{section.4.4}% 27
+\BOOKMARK [2][-]{subsection.4.4.3}{Application web}{section.4.4}% 28
+\BOOKMARK [0][-]{chapter.5}{Analyse des r\351sultats}{}% 29
+\BOOKMARK [0][-]{appendix.A}{Annexe}{}% 30
+\BOOKMARK [1][-]{section.A.1}{...}{appendix.A}% 31
+\BOOKMARK [1][-]{section.A.2}{...}{appendix.A}% 32
+\BOOKMARK [0][-]{appendix.B}{Bibliographie}{}% 33
