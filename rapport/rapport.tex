@@ -26,6 +26,9 @@
 \usepackage{listings}
 \usepackage{color}
 
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{sample.bib} %Import the bibliography file
+
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
@@ -102,7 +105,7 @@
 	{\scshape\LARGE Universite de Montpellier\par}
 	{\scshape\Large Rapport de projet\par}
 	\vspace{1.5cm}
-	{\huge\bfseries TITRE\par}
+	{\huge\bfseries Chemins spécifiques pour la classification dans les réseaux de neurones profonds\par}
 	\vspace{2cm}
 	{\Large\itshape
 		Belkassim BOUZIDI \\
@@ -206,7 +209,7 @@ Mais comment faire différencier une machine entre un chat et un chien ?
 La majorité des méthodes d'apprentissage profond utilisent des architectures de réseau neuronal et c'est pourquoi les modèles d'apprentissage profond sont également connus sous le nom de réseaux neuronaux profonds.
 Un processus d'apprentissage en profondeur se compose de deux phases clé : l’entraînement et l'inférence.
 
-La phase d' entrainement peut être considérée comme un processus d'étiquetage d'énormes quantités de données et d'identification de leurs caractéristiques correspondantes. Ici, le système compare ces caractéristiques et les mémorise pour arriver à des conclusions correctes lorsqu'il rencontre des données similaires la prochaine fois.
+La phase d'entraînement peut être considérée comme un processus d'étiquetage d'énormes quantités de données et d'identification de leurs caractéristiques correspondantes. Ici, le système compare ces caractéristiques et les mémorise pour arriver à des conclusions correctes lorsqu'il rencontre des données similaires la prochaine fois.
 
 Au cours de la phase d'inférence, le modèle tire des conclusions et étiquette les données non exposées à l'aide des connaissances acquises précédemment.
 
@@ -238,15 +241,16 @@ MNIST est un ensemble de données étiqueté qui associe des images de chiffres 
 \end{figure}
 
 \section{Problèmatique}
+\label{prob}
 
 L'objectif du projet est d'essayer de mieux comprendre le fonctionnement interne d'un réseau de neurones. Il s'agit de repérer, selon les données d'entrée, des signatures d'activation de neurones. Une signature correspond au pattern (ou chemin) emprunté par un objet au sein du réseau avant d'arriver à une conclusion. Concrètement, on veut analyser les différentes signatures obtenues par différents types de données et de modèles.
 
-Par exemple, si on entraîne un modèle à reconnaître des images de \textit{chiens} et de \textit{chats}, on voudrait répondre aux questions suivantes :
+Par exemple, si on entraîne un modèle à reconnaître des images de \textit{1} et de \textit{7}, on voudrait répondre aux questions suivantes :
 
 \begin{itemize}
 	\item À partir de quelle couche le modèle change de comportement pour reconnaître une image ?
-	\item Les signatures des images de \textit{chats}, sont-elles différentes de ceux des \textit{chiens} ?
-	\item Si on passe une image de \textit{voiture} au modèle, à quoi va ressembler sa signature ?
+	\item Les signatures des images de \textit{7}, sont-elles différentes de ceux des \textit{1} ?
+	\item Si on passe une image de \textit{3} au modèle, à quoi va ressembler sa signature ?
 \end{itemize}
 
 \section{Solution proposée}
@@ -392,14 +396,15 @@ Puis dans un deuxième temps, nous pourrons changer de modèle afin de passer à
 Afin d'abstraire l'utilisation des réseaux de neurones dans notre Notebook Jupyter, nous avons défini une classe Python (nomée \textit{MTQModel}) paramétrable qui se charge de construire un modèle, de l'entraîner et d'extraire les signatures. Point qu'on va aborder plus en détails dans la section qui suit.
 
 \section{Signature}
+\label{sig}
 
-Nous avons défini un réseau de neurones à maillage \textit{dense} avec deux couches cachées, comme à la figure \ref{dense}. La première couche cachée est composée de 32 neurones, la deuxième de 64. Une image qui traverse ce réseau laisse une signature $S$ qu'on peut définir comme un vecteur $H_1$ de 32 valeurs, associées à la première couche et un vecteur $H_2$ de 64 valeurs, associées à la deuxième couche. La signature d'une image dans un réseau est donc définie ainsi : $ S = (H_1, H_2)$
+Nous avons défini un réseau de neurones à maillage \textit{dense} avec deux couches cachées, comme à la figure \ref{dense}. La première couche cachée est composée de 32 neurones, la deuxième de 64. Une image qui traverse ce réseau laisse une signature $S$ qu'on peut définir comme un vecteur $H_1$ de 32 valeurs, associées à la première couche et un vecteur $H_2$ de 64 valeurs, associées à la deuxième couche. La signature d'une image dans un réseau est donc définie ainsi : $ S = (H_1, H_2)$\cite{Patternsig}
 
 Afin d'extraire la signature de chaque image, nous avons intégrer une méthode à notre classe Python \textit{MTQModel}\footnote{La méthode en question s'appelle \textit{get\_hidden\_layers\_outputs(x)}} qui permet de le faire automatiquement pour chaque image du \textit{dataset}.
 
 \subsection{Clustering}
 
-Une fois la signature des images extraite, nous passons à l'analyse de ces dernières. Pour cela, nous utilisant un algorithme de \textit{clustering}\footnote{ou le \href{https://fr.wikipedia.org/wiki/Partitionnement_de_donn\%C3\%A9es}{Partitionnement de données} en français}, le \textbf{K-means}. Ce dernier prend en paramètres les données et un certain $K$ donnée par l'utilisateur, puis construit $K$ clusters qui regroupent les données qui sont proches\footnote{Proche en terme de distance euclidienne}.
+Une fois la signature des images extraite, nous passons à l'analyse de ces dernières. Pour cela, nous utilisant un algorithme de \textit{clustering}\footnote{ou le \href{https://fr.wikipedia.org/wiki/Partitionnement_de_donn\%C3\%A9es}{Partitionnement de données} en français}, le \textbf{K-means}. Ce dernier prend en paramètres les données et un certain $K$ donnée par l'utilisateur, puis construit $K$ clusters qui regroupent les données qui sont proches\footnote{Proche en terme de distance euclidienne}\cite{Kmeans}.
 
 \begin{figure}[!h]
 \center
@@ -409,13 +414,24 @@ Une fois la signature des images extraite, nous passons à l'analyse de ces dern
 
 Afin de choisir un $K$ optimal, nous avons utilisé la méthode \textit{Silhouette} qui consiste à calculer, pour chaque $K$ de 2 à 10, la moyenne du score \textit{Silhouette} du clustering. Le meilleur $K$ étant celui qui donne la meilleure moyenne. Le score \textit{Silhouette} $ s(i) $ mesure combien un point est proche de son cluster comparer aux autres clusters\footnote{C'est pour cela que $ K $ doit être supérieur ou égal à 2}. Concrètement, le score d'un point $i$ est $ s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))} $ avec $a(i)$ est la mesure de la similarité du point $i$ avec son cluster et $b(i)$ le mesure de dissemblance du point $i$ par rapport aux autres clusters.
 
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=1.0\textwidth]{img/silhouette.png}
+	\end{center}
+	\caption{Le score silhouette}
+\end{figure}
+
 \section{Interface de visualisation}
+
 Pour pouvoir voir, analyser, évaluer et faire des expérimentations sur nos modèles, il faut avoir une interface de visualisation qui permet la projection des différentes visualisations des données et de pouvoir faire le lien entre ces visualisations.
 Notre but était de pouvoir projeter le résultat de nos extractions de signatures avec UMAP et le diagramme de Sankey et de pouvoir sélectionner un ou plusieurs éléments à partir de UMAP pour suivre sa ligne dans le diagramme de Sankey et vice-versa.
-Pour enfin réaliser une application web qui nous permet de faire plusieurs expérimentations, on va commencer par découvrir ce qui est UMAP et le diagramme de Sankey.
+Pour enfin réaliser une application web qui nous permet de faire plusieurs expérimentations, on va commencer par découvrir ce qui est UMAP et le diagramme de Sankey.\cite{Visu}
+
 \subsection{UMAP (Uniform Manifold Approximation and Projection)}
-La réduction de dimensionnalité est un outil puissant permettant aux praticiens de l'apprentissage automatique de visualiser et de comprendre des ensembles de données volumineux et de grande dimension. L'une des techniques de visualisation les plus largement utilisées est UMAP.
-UMAP, à sa base utilise des algorithmes de mise en page graphique pour organiser les données dans un espace de faible dimension. Dans le sens le plus simple, UMAP construit une représentation graphique de haute dimension des données puis l'optimise en un graphique de faible dimension pour être aussi structurellement similaire que possible. Dans notre cas, on va passer de 32 et 64 dimensions à 2 dimensions.
+
+La réduction de dimensionnalité est un outil puissant permettant aux praticiens de l'apprentissage automatique de visualiser et de comprendre des ensembles de données volumineux et de grande dimension\cite{clustering}. L'une des techniques de visualisation les plus largement utilisées est UMAP.
+UMAP, à sa base utilise des algorithmes de mise en page graphique pour organiser les données dans un espace de faible dimension. Dans le sens le plus simple, UMAP construit une représentation graphique de haute dimension des données puis l'optimise en un graphique de faible dimension pour être aussi structurellement similaire que possible. Dans notre cas, on va passer de 32 et 64 dimensions à 2 dimensions.\cite{umap}
+
 \begin{figure}[!h]
 \center
 \includegraphics[width=0.8\textwidth]{img/UMAP.png}
@@ -423,8 +439,9 @@ UMAP, à sa base utilise des algorithmes de mise en page graphique pour organise
 \end{figure}
 
 \subsection{Diagramme de Sankey}
-Un diagramme de Sankey est un type de diagramme de flux dans lequel la largeur des flèches est proportionnelle au flux représenté.
-Les diagrammes de Sankey visualisent les contributions à un flux en définissant la source pour représenter le nœud source, la cible pour le nœud cible, la valeur pour définir le volume du flux et le label indiquant le nom du nœud. Dans notre cas, on a utilisé le diagramme de Sankey pour visualiser le chemin de chaque donnée (image), en démarrant de l'input layer, en passant de son cluster de chaque couche cachée du modèle et en arrivant à l'output layer (la prédiction).
+
+Un diagramme de Sankey est un type de diagramme de flux\footnote{Un diagramme de flux est un type de représentation graphique destiné à présenter des données associant des entrées et des sorties, figurant des flux.} dans lequel la largeur des flèches est proportionnelle au flux représenté.
+Les diagrammes de Sankey visualisent les contributions à un flux en définissant la source pour représenter le nœud source, la cible pour le nœud cible, la valeur pour définir le volume du flux et le label indiquant le nom du nœud. Dans notre cas, on a utilisé le diagramme de Sankey pour visualiser le chemin de chaque donnée (image), en démarrant de l'input layer, en passant par son cluster de chaque couche cachée du modèle et en arrivant à l'output layer (la prédiction).
 
 \begin{figure}[!h]
 \center
@@ -441,7 +458,7 @@ Pour concevoir une application web, on a utilisé l'outil \textit{Voilà}, qui p
     \caption{Page web}
 \end{figure}
 
-Voilà permet aussi de changer l'interface graphique de la page d'accueil grâce à des templates, on a donc créer notre propre template pour avoir une page d'accueil personnalisée à notre goût, qui présente nos differentes expérimentations.
+\textit{Voilà} permet aussi de changer l'interface graphique de la page d'accueil grâce à des templates, on a donc créer notre propre template pour avoir une page d'accueil personnalisée à notre goût, qui présente nos differentes expérimentations.
 
 \begin{figure}[!h]
     \center
@@ -455,18 +472,192 @@ Voilà permet aussi de changer l'interface graphique de la page d'accueil grâce
 
 \chapter{Analyse des résultats}
 
+Cette partie est très importante vu qu'elle va nous permettre de répondre aux questions posées au début de ce rapport \ref{prob}. Mais aussi, nous essaierons d'avancer des hypothèses sur le fonctionnement interne d'un réseau de neurones.
+
+Pour répondre à ces questions, nous avons entraîné notre modèle pour reconnaître des images de 1 et de 7. Nous avons obtenu la visualisation de la figure \ref{visusig}.
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{img/visualisation17.png}
+\caption{Visualisation des signatures}
+\label{visusig}
+\end{center}
+\end{figure}
+
+Dans cette visualisation, les deux premiers graphes représentent la projection faite par \textit{UMAP} des deux vecteurs $ (H_1, H_2) $ définis dans la partie \ref{sig}. Chaque point est donc une projection en deux dimensions de son vecteur initial. La couleur des points est associée à leurs labels.
+
+Le troisième graphe correspond au diagramme de \textit{Sankey}. On voit clairement dans ce dernier, le parcours de chaque image.
+
+Dans \textit{UMAP}, deux points qui sont visuellement proches (resp. loins), ne le sont pas réellement, en distance euclidienne. Les clusters qui apparaissent dans la projection de \textit{UMAP} ne correspondant pas forcément au clustering de \textit{K-means}. On peut remarquer ce fait dans le premier graphe. On observer visuellement trois clusters, alors que le clustering \textit{K-means} en donne deux qu'on voit dans le diagramme de \textit{Sankey}.
+
+\paragraph{Changement de comportement}
+
+En regardant le diagramme de \textit{Sankey}, on remarque que la majorité des images de 1 (Resp. de 7) sont regroupées dans le même cluster (97\% en moyenne). Ce qui nous indique que notre modèle arrive, dès la première couche cachée, à reconnaître une image.
+
+\paragraph{Différence de signatures}
+
+Toujours grâce au diagramme de \textit{Sankey}, on observe (figure \ref{visusig}) que les signatures des 1 sont majoritairement différentes de celles des 7. Sauf pour quelques rares exceptions. Par exemple, quatre images de 7 ont été regroupées dans le cluster des 1, dès la première couche cachée. En effet, ces quatre images de 7 ressemblent vraiment à des 1, comme le montre la figure \ref{71}.
+
+
+\begin{figure}[h]
+\begin{minipage}[c]{.46\linewidth}
+\centering
+\includegraphics[width=0.4\textwidth]{img/7_1.png}
+\end{minipage}
+\hfill%
+\begin{minipage}[c]{.46\linewidth}
+\centering
+\includegraphics[width=0.4\textwidth]{img/7_2.png}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+\begin{minipage}[c]{.46\linewidth}
+\centering
+\includegraphics[width=0.4\textwidth]{img/7_3.png}
+\end{minipage}
+\hfill%
+\begin{minipage}[c]{.46\linewidth}
+\centering
+\includegraphics[width=0.4\textwidth]{img/7_4.png}
+\end{minipage}
+\caption{Les images de 7 ressemblant à des 1}
+\label{71}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{img/sankey_7.png}
+\end{center}
+\caption{Signature des 7 ressemblant à des 1}
+\label{sankey71}
+\end{figure}
+
+\paragraph{Insertion d'anomalies}
+
+Afin de répondre à la dernière question, nous avons réalisé deux expérimentations dans lesquelles nous avons inséré des anomalies. C'est-à-dire, pour un modèle entraîner à reconnaître des images de 1 et de 7, on lui passe :
+
+\begin{description}
+\item[Des images de 4] On observe dans ce premier cas (voir la figure \ref{expe1}), que la majorité des images de 4 sont regroupées avec les images de 7 et ce depuis la première couche cachée. Cela revient probablement au fait que les images de 4 ressemblent plus aux images de 7 qu'aux images de 1.
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{img/anomalie4_sankey.png}
+\caption{Insertion d'images de 4}
+\label{expe1}
+\end{center}
+\end{figure}
+
+\item[Des images de 3] Par contre, comme les images de 3 ne ressemblent ni aux images de 1, ni à ceux de 7, elles ont été regroupées de manière hasardeuse (voir la figure \ref{expe2}).
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{img/anomalie3_sankey.png}
+\caption{Insertion d'images de 3}
+\label{expe2}
+\end{center}
+\end{figure}
+\end{description}
+
+D'après ces deux expérimentations, on conclu que le modèle essai tant bien que mal de regrouper les anomalies avec les objets qu'il juge les plus ressemblants à ces dernières.
+
+\section{Conclusion}
+
+Les observations précédentes, nous poussent à croire que les ANN\footnote{Artificial Neural Network} se basent sur une sorte de détection de patterns afin de généraliser un certain concept. Prenons exemple sur l'insertion des images de 4, on observe que le modèle a détecté une ressemblance entre le chiffre 4 et le chiffre 7 qui l'a induit à classer la plupart des images de 4 en 7.
+
+Si on prend un cas générale de classification de données ayant $n$ attributs de $A_1$ à $A_n$. On cherche à entraîner un modèle à classifier ces données en deux classes $C_1$ et $C_2$. Il est possible que durant la phase d'entraînement, le modèle détecte des similarités entre les objets sur un attribut $A_i$ qui indique qu'il existe peut-être \textit{une corrélation}, mais pas forcément \textit{une causalité}, avec les deux classes $C_1$ et $C_2$. Ce qui mènera notre modèle à de possibles mauvaises classifications sur des données qu'il n'a jamais vues.
+
+On ne pourra donc jamais affirmer avec certitude qu'un modèle a réussi à généraliser un certain concept, et ce, malgré de bons résultats durant les deux phases d'entraînement et de validation. Ce qui accentue encore plus l'importance des prétraitements des données et de l'explication des résultats. Chose qu'un réseau de neurones ne peut faire.
+
 % ------------------------------------- %
 % Annexes
 % ------------------------------------- %
 
 \appendix
-\chapter{Annexe}
 
-\section{...}
+\printbibliography
 
-\section{...}
+\chapter{Code source}
 
-\chapter{Bibliographie}
+\section{Code source de la méthode \textit{cut\_data}}
 
+\begin{lstlisting}[language=Python]
+	def cut_data(x, y, keep=[0,1], n=None):
+    new_x = x[np.where(y == keep[0])][:n]
+    new_y = y[np.where(y == keep[0])][:n]
+    for i in keep[1:]:
+        new_x = np.concatenate((new_x , x[np.where(y == i)][:n]))
+        new_y = np.concatenate((new_y , y[np.where(y == i)][:n]))
+
+    return new_x, new_y
+\end{lstlisting}
+
+\section{Code source de la méthode \textit{normalize\_dataset}}
+
+\begin{lstlisting}[language=Python]
+	def normalize_dataset(x_train, y_train):
+    # Scale images to the [0, 1] range
+    x_train = x_train.astype("float32") / np.amax(x_train)
+    # Flatten the images.
+    x_train = x_train.reshape((-1, len(x_train[0]) * len(x_train[0][0])))
+    # convert class vectors to binary class matrices
+    # Ex: 1 will become [0, 1] if len(np.unique(y_train))==2
+    y_train = np.array(list(map(lambda x:  [1 if x == k else 0 for k in np.sort(np.unique(y_train))], y_train)))
+
+    return x_train , y_train
+\end{lstlisting}
+
+\section{Code source de la méthode \textit{get\_best\_k}}
+
+\begin{lstlisting}[language=Python]
+	def get_best_k(hidden_layers, kmax=7, verbose=False):
+    best_k = []
+
+    fig, axes = plt.subplots(nrows=len(hidden_layers), ncols=2, sharex=True)
+    fig.set_size_inches(15, 9)
+
+    for x, ax in zip(hidden_layers,axes):
+        sil = []
+        sse = []
+
+        for k in range(1, kmax+1):
+            kmeans = KMeans(n_clusters = k, random_state=24).fit(x)
+            labels = kmeans.labels_
+            if k == 1:
+                sil.append(0)
+            else:
+                sil.append(silhouette_score(x, labels, metric = 'euclidean'))
+
+            centroids = kmeans.cluster_centers_
+            pred_clusters = kmeans.predict(x)
+            curr_sse = 0
+            # calculate square of Euclidean distance of each point from its cluster center and add to current WSS
+            for i in range(len(x)):
+                curr_center = centroids[pred_clusters[i]]
+                curr_sse += np.sqrt(np.sum((x[i] - curr_center) ** 2, axis=0))
+            sse.append(curr_sse)
+        
+        best_k.append(np.array(sil).argmax()+1)
+        
+        if verbose:
+            # ploting
+            ax[0].plot(range(1,kmax+1),sil,color='r')
+            ax[0].set_xlabel('K values')
+            ax[0].set_ylabel('Silhouette score')
+            ax[1].plot(range(1,kmax+1),sse, color='g')
+            ax[1].set_xlabel('K values')
+            ax[1].set_ylabel('Elbow')
+            
+            ax[0].grid(True)
+            ax[1].grid(True)
+        
+    if verbose: #Verbose
+        print("Best K values: ", best_k)
+        plt.show()
+    else:
+        plt.close()
+    
+    return best_k
+\end{lstlisting}
 
 \end{document}

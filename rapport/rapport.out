@@ -27,7 +27,8 @@
 \BOOKMARK [2][-]{subsection.4.4.2}{Diagramme de Sankey}{section.4.4}% 27
 \BOOKMARK [2][-]{subsection.4.4.3}{Application web}{section.4.4}% 28
 \BOOKMARK [0][-]{chapter.5}{Analyse des r\351sultats}{}% 29
-\BOOKMARK [0][-]{appendix.A}{Annexe}{}% 30
-\BOOKMARK [1][-]{section.A.1}{...}{appendix.A}% 31
-\BOOKMARK [1][-]{section.A.2}{...}{appendix.A}% 32
-\BOOKMARK [0][-]{appendix.B}{Bibliographie}{}% 33
+\BOOKMARK [1][-]{section.5.1}{Conclusion}{chapter.5}% 30
+\BOOKMARK [0][-]{appendix.A}{Code source}{}% 31
+\BOOKMARK [1][-]{section.A.1}{Code source de la m\351thode cut\137data}{appendix.A}% 32
+\BOOKMARK [1][-]{section.A.2}{Code source de la m\351thode normalize\137dataset}{appendix.A}% 33
+\BOOKMARK [1][-]{section.A.3}{Code source de la m\351thode get\137best\137k}{appendix.A}% 34

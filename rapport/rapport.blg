@@ -1,0 +1,15 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[0] Config.pm:315> INFO - Logfile is 'rapport.blg'
+[100] biber:330> INFO - === mar. mai 25, 2021, 10:25:56
+[123] Biber.pm:415> INFO - Reading 'rapport.bcf'
+[213] Biber.pm:952> INFO - Found 5 citekeys in bib section 0
+[226] Biber.pm:4334> INFO - Processing section 0
+[238] Biber.pm:4523> INFO - Looking for bibtex format file 'sample.bib' for section 0
+[239] bibtex.pm:1682> INFO - LaTeX decoding ...
+[245] bibtex.pm:1494> INFO - Found BibTeX data source 'sample.bib'
+[281] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[282] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[282] Biber.pm:4162> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[282] Biber.pm:4168> INFO - No sort tailoring available for locale 'fr-FR'
+[293] bbl.pm:651> INFO - Writing 'rapport.bbl' with encoding 'UTF-8'
+[296] bbl.pm:754> INFO - Output to rapport.bbl
