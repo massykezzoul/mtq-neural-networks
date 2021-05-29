@@ -66,6 +66,9 @@
 
 \section{Introduction}
 \subsection{Les réseaux de neurones profonds}
+\begin{frame}{Les réseaux de neurones profonds}
+    
+\end{frame}
 
 \placelogofalse 
 \subsection{Le jeu de données}
@@ -110,20 +113,189 @@
 \end{frame}
 
 \section{Organisation}
+\begin{frame}{Organisation du projet}
+    
+\end{frame}
 
 \section{Analyse des données}
 \subsection{Découpage des données}
+\begin{frame}{Découpage des données}
+    
+\end{frame}
+
 \subsection{Prétraitement}
+\begin{frame}{Prétraitement}
+    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/normalisation.png}}
+\end{frame}
 
 \section{Développement de l’architecture}
 \subsection{Technologies utilisées}
+\begin{frame}{Jupyter notebook}
+    
+\end{frame}
+
+\begin{frame}{Tensorflow, Keras}
+    
+\end{frame}
+
+\begin{frame}{Voilà}
+    
+\end{frame}
+
+\placelogofalse 
 \subsection{Modèle d'apprentissage}
+\begin{frame}{Modèle d'apprentissage}
+    \begin{block}{Types de réseau}
+        Les types de réseau diffèrent par plusieurs paramètres :
+        \begin{itemize}
+            \item la topologie des connexions entre les neurones ;
+            \item la fonction d’agrégation utilisée;
+            \item et bien d’autres paramètres.
+        \end{itemize}
+    \end{block}
+
+    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/ann-dense.jpg}}
+\end{frame}
+\placelogotrue 
+
+\begin{frame}{Réseau de neurones à convolution}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/cnn.png}}
+\end{frame}
+
+\placelogofalse 
 \subsection{Signature et Clustering}
+\begin{frame}{Signature}
+    \begin{block}{Définition}
+        Soit un réseau à $N$ couches cachées, La \textit{signature} $S$ d'une image qui travesent ce réseau, se définit ainsi : $ S = (H_1, ..., H_N) $, avec $H_i$ est le vecteur contenant les valeurs de chaque neurone de la couche $i$.
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/dense-mnist.png}}
+\end{frame}
+\placelogotrue 
+
+\placelogofalse 
+\begin{frame}{Clustering}
+    \begin{block}{K-means}
+        \textbf{K-means} est algorithme de \textit{clustering}. Il prend en paramètres les
+        données et un certain $K$ donnée par l’utilisateur, puis construit $K$ clusters qui regroupent les données qui sont proches (en terme de distance euclidienne).
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/kmeans.png}}
+\end{frame}
+\placelogotrue 
+
+\begin{frame}{Score \textit{Silhouette}}
+    \begin{block}{Choisir un $K$}
+        Par contre, l'algorithme ne permet pas de trouver tout seul un $K$ optimal. Mais il existe une méthode qui calcul la performance d'un \textit{clustering}. La méthode \textit{Silhouette}.
+    \end{block}
+    \begin{block}{Score \textit{Silhouette}}
+        Concrétement, cette méthode consiste à calculer pour un clustering, la moyenne du score \textit{Silhouette} de chaque point. $ s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))} $.
+
+        Avec $a(i)$ est la mesure de la similarité du point $i$ avec son cluster et $b(i)$ le mesure de dissemblance du point $i$ par rapport aux autres clusters.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/silhouette.png}}
+\end{frame}
+
 \subsection{Interface de visualisation}
+\begin{frame}{UMAP}
+    
+\end{frame}
+
+\begin{frame}{Diagramme de Sankey}
+    
+\end{frame}
+
+\begin{frame}{Site web et Voilà}
+    
+\end{frame}
 
 \section{Analyse des résultats}
-\subsection{Réponse aux questions}
+\begin{frame}{Résultat}
+    \begin{block}{}
+        Afin d'illuster les résultats obtenu, nous prenons un exemple oû on entraine un modèle à deux couches cachées à reconnaitre des images de \textit{1} et de \textit{7}.
+    \end{block}
+\end{frame}
+
+\placelogofalse
+\begin{frame}{Résultats}
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/visualisation17.png}}
+\end{frame}
+\placelogotrue
+
+\subsection{Réponses aux questions}
+\begin{frame}{Changement de comportement}
+    %À partir de quelle couche le modèle change de comportement pour reconnaître une image ?
+    \begin{block}{}
+        Notre modèle arrive, dès la première couche cachée, à reconnaître une image.
+    \end{block}
+    
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/sankey17.png}}
+\end{frame}
+
+\begin{frame}{Différence de signatures}
+    %Les signatures des images de 7, sont-elles différentes de ceux des 1 ?
+    \begin{block}{}
+        On observe que les signatures des 1 sont majoritairement différentes de celles des 7. Sauf pour quelques rares exceptions.
+    \end{block}
+
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/sankey_7.png}}
+
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[h]
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[width=0.4\textwidth]{img/7_1.png}
+        \end{minipage}
+        \hfill%
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[width=0.4\textwidth]{img/7_2.png}
+        \end{minipage}
+        \end{figure}
+        
+        \begin{figure}[h]
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[width=0.4\textwidth]{img/7_3.png}
+        \end{minipage}
+        \hfill%
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[width=0.4\textwidth]{img/7_4.png}
+        \end{minipage}
+        \caption{Les images de 7 ressemblant à des 1}
+        \label{71}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Insertion d’anomalies}
+    %Si on passe une image de 3 au modèle, à quoi va ressembler sa signature ?
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{img/anomalie4_sankey.png}
+        \caption{Insertion d’images de 4}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Insertion d’anomalies}
+    %Si on passe une image de 3 au modèle, à quoi va ressembler sa signature ?
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{img/anomalie3_sankey.png}
+        \caption{Insertion d’images de 3}
+    \end{figure}
+\end{frame}
+
 \subsection{Conclusion}
+\begin{frame}{Conclusion}
+    \begin{block}{}
+        Soit $n$ attributs de $A_1$ à $A_n$. On cherche à entraîner un modèle à classifier ces données en deux classes $C_1$ et $C_2$. Le modèle peut détecter des similarités entre les objets sur un attribut $A_i$ qui indique qu'il existe peut-être \textit{une corrélation}, mais pas forcément \textit{une causalité}, avec les deux classes $C_1$ et $C_2$. Ce qui mènera notre modèle à de possibles mauvaises classifications sur des données qu'il n'a jamais vues.
+    \end{block}
+\end{frame}
+
 
 \begin{frame}
     \begin{center}
