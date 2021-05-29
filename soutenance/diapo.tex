@@ -112,8 +112,45 @@
 \section{Organisation}
 
 \section{Analyse des données}
+\begin{frame}
+    \begin{block}{Importance de l'analyse}
+        L'objectif de l'analyse des données, c'est de savoir comment sont nos données et comment on peut les utiliser.
+    \end{block}
+\end{frame}
+
+
 \subsection{Découpage des données}
+
+\begin{frame}{Découpage des données}
+    \begin{itemize}
+        \item Garder un nombre précis d’images pour un ensemble de chiffres définis.
+        \item Faciliter la phase de développement.
+        \item Pouvoir mieux visualiser les résultats sur un petit
+        ensemble de données.
+    \end{itemize}
+\end{frame}
+
 \subsection{Prétraitement}
+\begin{block}{Scaling}
+    Utilisation de la normalisation, qui consiste à
+    mettre les valeurs des images entre 0 et 1 au lieu de 0 et 255.
+\end{block}
+\begin{block}{Flattening}
+    Aplatissement des images pour avoir un tableau à une seule dimension au lieu d’une matrice à deux dimensions.
+\end{block}
+\begin{block}{}
+    Transformation des labels en un vecteur binaire contenant que des 0 et des 1.
+    \begin{itemize}
+        \item Taille du vecteur égale au nombre de labels uniques à garder.
+        \item Tri des labels à garder.
+        \item Mettre un 1 à la case du label correspendant
+        et des 0 aux autres cases.
+        \item Ex: transformation en vecteur des images de 1, 3 et 7.
+        \item Pour un 1 $\implies$ [1,0,0].
+        \item Pour un 3 $\implies$ [0,1,0].
+        \item Pour un 7 $\implies$ [0,0,1].
+    \end{itemize}
+\end{block}
 
 \section{Développement de l’architecture}
 \subsection{Technologies utilisées}
