@@ -81,7 +81,7 @@
 \subsection{Problèmatique}
 \begin{frame}{Problèmatique}
     \begin{block}{Boite noire}
-        Les réseaux de neurones semblent s'appliquent à la manière d'une boite noire. Aucune information n'est fournie sur ce qui les a conduits à atteindre leurs prédictions.
+        Les réseaux de neurones semblent s'appliquer à la manière d'une boite noire. Aucune information n'est fournie sur ce qui les a conduits à atteindre leurs prédictions.
     \end{block}
     \begin{block}{Objectifs}
         L'objectif est de comprendre le fonctionnement interne d'un réseau de neurones et de repérer des signatures d'activation de neurones en variant les données.
@@ -123,7 +123,7 @@
         L'objectif de l'analyse des données, c'est de savoir comment sont nos données et comment on peut les utiliser.
     \end{block}
 \end{frame}
-
+ 
 
 \subsection{Découpage des données}
 
@@ -169,8 +169,14 @@
 \end{frame}
 
 \begin{frame}{Voilà}
-    
-\end{frame}
+    \begin{block}{}
+        Voilà permet de transformer un
+        notebook jupyter en une application web autonome (standalone).
+    \end{block}
+    \begin{block}{}
+        Voilà permet aussi de changer l’interface graphique de la page d’accueil grâce à des templates.
+    \end{block}    
+\end{frame} 
 
 \placelogofalse 
 \subsection{Modèle d'apprentissage}
@@ -228,17 +234,41 @@
 \end{frame}
 
 \subsection{Interface de visualisation}
-\begin{frame}{UMAP}
-    
+\placelogofalse
+\begin{frame}{UMAP }
+    \begin{block}{UMAP}
+        (Uniform Manifold Approximation and Projection) Utilise des algorithmes de mise en page graphique pour organiser les données dans
+        un espace de faible dimension.
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/UMAP.png}}
+
 \end{frame}
+\placelogotrue
 
 \begin{frame}{Diagramme de Sankey}
-    
+    \begin{block}{}
+        Un diagramme de Sankey est un type de diagramme de flux 6 dans lequel la largeur des flèches
+        est proportionnelle au flux représenté.
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/sankey.png}}
+\end{frame}
+\placelogofalse
+\begin{frame}{Application web}
+    \begin{block}{Page web}
+        Transformation d'un Jupyter notebook contenant les différentes visualisations et faisant le lien entre eux.
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/umap-sankey2.png}}
 \end{frame}
 
-\begin{frame}{Site web et Voilà}
-    
+\begin{frame}{Application web}
+    \begin{block}{Page d'accueil}
+        Création d'une page d'accueil personnalisée présentant nos différentes expérimentations.
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/accueil.png}}
 \end{frame}
+\placelogotrue
+
+
 
 \section{Analyse des résultats}
 \begin{frame}{Résultat}
