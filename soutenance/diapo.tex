@@ -66,23 +66,44 @@
 
 \section{Introduction}
 \subsection{Les réseaux de neurones profonds}
+\placelogofalse
 \begin{frame}{Présentation des réseaux de neurones}
-    
+    \begin{block}{}
+        Les réseaux de neurones sont une des méthodes d'apprentissage automatique utilisées en machine learning. Ils sont inspirés du fonctionnement d'un cerveau humain. 
+    \end{block}
+
+    \begin{block}{}
+        Ils sont constitués de plusieurs couches consécutives de neurones. Chaque neurone est relié à un certain nombre de neurones de la couche précédente et de la couche suivante
+    \end{block}
+
+    \makebox[\textwidth]{\includegraphics[width=0.5\textwidth]{img/ann-simple.png}}
+
 \end{frame}
 
 \begin{frame}{Feedforward}
-    
+    \makebox[\textwidth]{\includegraphics[width=1.\textwidth]{img/ann-biais-poids.png}}
 \end{frame}
+\placelogotrue
 
 \begin{frame}{Back propagation}
-    
+    \begin{block}{Comment un réseau \textit{apprend} ?}
+        Pour qu'un réseau puisse « apprendre »:
+        \begin{itemize}
+            \item Calculer l'\textit{erreur} $ e = \frac{1}{2}(pred - result)^{2}$;
+            \item Ajuster les poids afin de minimiser l'erreur $ e $;
+            \item En répétant ces étapes sur une masse importante de données, le réseau pourra « apprendre » à répondre à une question.
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}{Black-box}
-    
+    \begin{block}{}
+        Bien que les réseaux de neurones donnent de bons résultats généralement, leur structure leur donne un effet de \textit{boite noire}. C'est-à-dire qu'ils permettent de donner des prédictions, mais sans pouvoir expliquer le raisonnement qui les a menés à ces dernières.
+    \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/black-box.jpeg}}
 \end{frame}
 
-\placelogofalse 
+\placelogofalse
 \subsection{Le jeu de données}
 \begin{frame}{MNIST}
     \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/mnist.png}}
