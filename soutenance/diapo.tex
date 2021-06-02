@@ -15,6 +15,57 @@
 \usepackage{mathtools}
 \usepackage{array}
 
+% Bout de code
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=0,                   % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  %language=C++,                    % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+
 \usetheme{Frankfurt}
 \usetheme{CambridgeUS}
 \usetheme{JuanLesPins}
@@ -30,7 +81,7 @@
 %\hypersetup{pdfpagemode=FullScreen}
 
 \title[Chemins spécifiques]{Chemins spécifiques pour la classification dans les réseaux de neurones profonds}
-\author[Elhouiti, Kezzoul]{ Elhouiti Chakib - Kezzoul Massili \\}
+\author[Bouzidi, Elhouiti, Kezzoul]{Bouzidi Belkassim - Elhouiti Chakib - Kezzoul Massili \\}
 \institute[]{Université de Montpellier}
 \date{\today}
 
@@ -69,78 +120,36 @@
 \placelogofalse
 \begin{frame}{Présentation des réseaux de neurones}
     \begin{block}{}
-        Les réseaux de neurones sont une des méthodes d'apprentissage automatique utilisées en machine learning. Ils sont inspirés du fonctionnement d'un cerveau humain. 
+        Les réseaux de neurones sont constitués de plusieurs couches consécutives de neurones interconnectées.
     \end{block}
 
-    \begin{block}{}
-        Ils sont constitués de plusieurs couches consécutives de neurones. Chaque neurone est relié à un certain nombre de neurones de la couche précédente et de la couche suivante
-    \end{block}
-
-    \makebox[\textwidth]{\includegraphics[width=0.5\textwidth]{img/ann-simple.png}}
+    \makebox[\textwidth]{\includegraphics[width=0.5\textwidth]{img/ann-dense.jpg}}
 
 \end{frame}
 
-\begin{frame}{Feedforward}
+\begin{frame}{Fonctionnement}
     \makebox[\textwidth]{\includegraphics[width=1.\textwidth]{img/ann-biais-poids.png}}
 \end{frame}
-\placelogotrue
 
-\begin{frame}{Back propagation}
-    \begin{block}{Comment un réseau \textit{apprend} ?}
-        Pour qu'un réseau puisse « apprendre »:
-        \begin{itemize}
-            \item Calculer l'\textit{erreur} $ e = \frac{1}{2}(pred - result)^{2}$;
-            \item Ajuster les poids afin de minimiser l'erreur $ e $;
-            \item En répétant ces étapes sur une masse importante de données, le réseau pourra « apprendre » à répondre à une question.
-        \end{itemize}
-    \end{block}
-\end{frame}
+\begin{frame}{Boite noire}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/black-box.png}}
 
-\begin{frame}{Black-box}
-    \begin{block}{}
-        Bien que les réseaux de neurones donnent de bons résultats généralement, leur structure leur donne un effet de \textit{boite noire}. C'est-à-dire qu'ils permettent de donner des prédictions, mais sans pouvoir expliquer le raisonnement qui les a menés à ces dernières.
-    \end{block}
-    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/black-box.jpeg}}
-\end{frame}
-
-\placelogofalse
-\subsection{Le jeu de données}
-
-\begin{frame}{Le jeu de données}
-    \begin{block}{Mixed National Institute of Standards and Technology}
-        MNIST est une base de données très utilisée par les ingénieurs en \textit{Data Science}. Elle est composée de \textit{70000} images de chiffre manuscrit.
-
-        Chaque image est composée de $28 * 28$ pixels de 0 à 255 représenetant le niveau de gris. 
-    \end{block}
-\end{frame}
-
-\begin{frame}{MNIST}
-    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/mnist.png}}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/black-box2.png}}
 \end{frame}
 \placelogotrue
 
-\placelogofalse 
 \subsection{Problèmatique}
 \begin{frame}{Problèmatique}
-    \begin{block}{Boite noire}
-        Les réseaux de neurones semblent s'appliquer à la manière d'une boite noire. Aucune information n'est fournie sur ce qui les a conduits à atteindre leurs prédictions.
-    \end{block}
     \begin{block}{Objectifs}
-        L'objectif est de comprendre le fonctionnement interne d'un réseau de neurones et de repérer des signatures d'activation de neurones en variant les données.
-    \end{block}
+        L'objectif est de comprendre le fonctionnement interne d'un réseau de neurones et de repérer des signatures d'activations.
 
-    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/ann-dense.jpg}}
-        
-\end{frame}
-\placelogotrue
-
-\begin{frame}{Questions qu'on se posent}
-    Par exemple, si on entraîne un modèle à reconnaître des images de 1 et de 7
-    \begin{itemize}
+        \begin{itemize}
         \item À partir de quelle couche le modèle change de comportement pour reconnaître une image ?
         \item Les signatures des images de \textit{7}, sont-elles différentes de ceux des \textit{1} ?
         \item Si on passe une image de \textit{3} au modèle, à quoi va ressembler sa signature ?
-    \end{itemize}    
+        \end{itemize}    
+    \end{block}
+        
 \end{frame}
 
 \subsection{Solution proposée}
@@ -150,199 +159,128 @@
         \item Récupérer, pour chaque donnée, la sortie des couches cachées.
         \item Extraire les signatures grâce à des algorithmes de \textit{clustering}.
         \item Réaliser une interface de visualisation en utilisant différentes techniques.
-        \item Analyser les résultats et répondre aux questions.
     \end{itemize}
 \end{frame}
 
 \section{Organisation}
-\begin{frame}{Organisation du projet}
-
-    \begin{block}{Temps de travail}
-        Travailler un maximum
-        de temps ensemble et de manière très régulière.
-    \end{block}
-
-    \begin{block}{Progression}
-        Réalisation des tâches en retard durant le
-        week-end pour ne pas cumuler de retard
-    \end{block}
-
-    \begin{block}{Réunions}
-        Toutes les deux semaines, nous nous sommes réunis avec notre encadrant, M. Pascal Poncelet.
-    \end{block}
-\end{frame}
 \placelogofalse
-\begin{frame}{Découpage du projet}
-    \begin{block}{Analyse des données}
-        La première étape qui consiste à analyser les données MNIST et définition des outils utile à leurs manipulation.
-    \end{block}
-
-    \begin{block}{Développement}
-        Implémentation des modèles d'apprentissage automatique et extraction des informations internes à ces derniers.
-    \end{block}
-
-    \begin{block}{Analyse des Résultats}
-        Réalisation d'une interface web et effectuation d'expérimentations pour pouvoir en tirer des conclusions
-    \end{block}
+\begin{frame}{Organisation du projet}
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/diagramme_gantt.png}}
 \end{frame}
 \placelogotrue
+
 \section{Analyse des données}
-\begin{frame}
-    \begin{block}{Importance de l'analyse}
-        L'objectif de l'analyse des données, c'est de savoir comment sont nos données et comment on peut les utilisées.
+\placelogofalse
+\begin{frame}{Le jeu de données}
+    \begin{block}{Mixed National Institute of Standards and Technology}
+       Base de données composée de \textit{70000} images de chiffre manuscrit.
     \end{block}
+    \makebox[\textwidth]{\includegraphics[width=0.7\textwidth]{img/mnist.png}}
 \end{frame}
+\placelogotrue
  
+\subsection{Seléction des données}
 
-\subsection{Découpage des données}
-
-\begin{frame}{Découpage des données}
+\begin{frame}{Seléction des données}
     \begin{itemize}
         \item Garder un nombre précis d’images pour un ensemble de chiffres définis.
         \item Faciliter la phase de développement.
-        \item Pouvoir mieux visualiser les résultats sur un petit
-        ensemble de données.
+        \item Pouvoir mieux visualiser les résultats sur un petit ensemble de données.
     \end{itemize}
 \end{frame}
 
 \subsection{Prétraitement}
 
-\begin{frame}
+\placelogofalse
+\begin{frame}{Prétraitement}
 \begin{block}{Scaling}
-    Utilisation de la normalisation, qui consiste à
-    mettre les valeurs des images entre 0 et 1 au lieu de 0 et 255.
+    Normalisation: Mettre les valeurs des images entre 0 et 1 au lieu de 0 et 255.
 \end{block}
+
 \begin{block}{Flattening}
-    Aplatissement des images pour avoir un tableau à une seule dimension au lieu d’une matrice à deux dimensions.
+    Applatir les images pour avoir un tableau à une seule dimension au lieu d’une matrice.
 \end{block}
-\begin{block}{}
+
+\begin{block}{One-hot encoding}
     Transformation des labels en un vecteur binaire contenant que des 0 et des 1.
     \begin{itemize}
-        \item Taille du vecteur égale au nombre de labels uniques à garder.
-        \item Tri des labels à garder.
-        \item Mettre un 1 à la case du label correspendant
-        et des 0 aux autres cases.
-        \item Ex: transformation en vecteur des images de 1, 3 et 7.
         \item Pour un 1 $\implies$ [1,0,0].
         \item Pour un 3 $\implies$ [0,1,0].
         \item Pour un 7 $\implies$ [0,0,1].
     \end{itemize}
 \end{block}
 \end{frame}
+\placelogotrue
 
 \section{Développement de l’architecture}
 
 \subsection{Technologies utilisées}
 
-\begin{frame}{Jupyter notebook}
-    \begin{block}{}
-        Les notebooks Jupyter offrent un excellent moyen d’écrire et d’itérer sur du code Python.
-    \end{block}
-
-    \begin{block}{}
-        C’est
-        un outil incroyablement puissant pour développer et présenter de manière interactive des projets
-        de science de données.
-    \end{block}
-
-    \begin{block}{}
-        Jupyter notebook intègre le code et sa sortie dans un document unique qui
-        combine des visualisations, du texte, des équations mathématiques et d’autres médias riches.
-    \end{block}
-\end{frame}
 \placelogofalse
-\begin{frame}{Tensorflow, Keras}
-    \begin{block}{Tensorflow}
-        Initialement créé par l’équipe Google Brain à des fins internes, telles
-        que le filtrage du spam sur Gmail, il est devenu open-source en 2015.
-    \end{block}
-
-    \begin{block}{}
-        Tensorflow est souvent utilisé pour résoudre des problèmes d’apprentissage profond et pour la
-        formation et l’évaluation des processus jusqu’au déploiement du modèle.
-    \end{block}
-
-    \begin{block}{Keras}
-        Keras est une API de réseau neuronal open source écrite en Python. Il peut fonctionner sur
-        plusieurs frameworks d’apprentissage en profondeur et d’apprentissage automatique.
-    \end{block}
-
+\begin{frame}{Jupyter notebook}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/jupyter.png}}
 \end{frame}
 \placelogotrue
+
+\begin{frame}{Tensorflow, Keras}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/tensor&keras.jpg}}
+\end{frame}
+
+\placelogofalse
 \begin{frame}{Voilà}
-    \begin{block}{}
-        Voilà permet de transformer un
-        notebook jupyter en une application web autonome (standalone).
-    \end{block}
-    \begin{block}{}
-        Voilà permet aussi de changer l’interface graphique de la page d’accueil grâce à des templates.
-    \end{block}    
+    \begin{figure}[h]
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{img/voila1.png}
+        \end{minipage}
+        \hfill%
+        \begin{minipage}[c]{.46\linewidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{img/voila2.png}
+        \end{minipage}
+    \end{figure}
 \end{frame} 
 
-\placelogofalse 
 \subsection{Modèle d'apprentissage}
-\begin{frame}{Modèle d'apprentissage}
-    \begin{block}{Types de réseau}
-        Les types de réseau diffèrent par plusieurs paramètres :
+\begin{frame}{Création du modèle}
+    \begin{block}{Modèle}
         \begin{itemize}
-            \item la topologie des connexions entre les neurones ;
-            \item la fonction d’agrégation utilisée;
-            \item et bien d’autres paramètres.
+            \item 2 couches cachées;
+            \item 32 neurones pour la première;
+            \item 64 pour la deuxième;
+            \item fonction d'activation \textit{relu} pour les couches internes;
+            \item et \textit{softmax} pour la dernière couche.
         \end{itemize}
     \end{block}
-
-    \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/ann-dense.jpg}}
-\end{frame}
-\placelogotrue 
-
-\begin{frame}{Réseau de neurones à convolution}
-    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/cnn.png}}
-\end{frame}
-
-\placelogofalse 
-\subsection{Signature et Clustering}
-\begin{frame}{Signature}
-    \begin{block}{Définition}
-        Soit un réseau à $N$ couches cachées, La \textit{signature} $S$ d'une image qui travesent ce réseau, se définit ainsi : $ S = (H_1, ..., H_N) $, avec $H_i$ est le vecteur contenant les valeurs de chaque neurone de la couche $i$.
-    \end{block}
-    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/dense-mnist.png}}
+    \vspace{5mm}
+    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/build-model-code.png}}
 \end{frame}
 \placelogotrue 
 
 \placelogofalse 
 \begin{frame}{Clustering}
     \begin{block}{K-means}
-        \textbf{K-means} est algorithme de \textit{clustering}. Il prend en paramètres les
-        données et un certain $K$ donnée par l’utilisateur, puis construit $K$ clusters qui regroupent les données qui sont proches (en terme de distance euclidienne).
+        \textbf{K-means} prend en paramètres les données et un certain $K$ donnée par l’utilisateur, puis construit $K$ clusters qui regroupent les données qui sont proches (en terme de distance euclidienne).
     \end{block}
     \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/kmeans.png}}
 \end{frame}
 \placelogotrue 
 
-\begin{frame}{Score \textit{Silhouette}}
-    \begin{block}{Choisir un $K$}
-        Par contre, l'algorithme ne permet pas de trouver tout seul un $K$ optimal. Mais il existe une méthode qui calcul la performance d'un \textit{clustering}. La méthode \textit{Silhouette}.
+\begin{frame}{Choix du $K$}
+    \begin{block}{Choix du $K$}
+        Concrétement, cette méthode consiste à calculer pour un clustering, la moyenne du score \textit{Silhouette} de chaque point.
     \end{block}
-    \begin{block}{Score \textit{Silhouette}}
-        Concrétement, cette méthode consiste à calculer pour un clustering, la moyenne du score \textit{Silhouette} de chaque point. $ s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))} $.
-
-        Avec $a(i)$ est la mesure de la similarité du point $i$ avec son cluster et $b(i)$ le mesure de dissemblance du point $i$ par rapport aux autres clusters.
-    \end{block}
-\end{frame}
-
-\begin{frame}
-    \makebox[\textwidth]{\includegraphics[width=0.9\textwidth]{img/silhouette.png}}
+    \makebox[\textwidth]{\includegraphics[width=0.8\textwidth]{img/silhouette.png}}
 \end{frame}
 
 \subsection{Interface de visualisation}
 \placelogofalse
-\begin{frame}{UMAP }
+\begin{frame}{UMAP}
     \begin{block}{UMAP}
         (Uniform Manifold Approximation and Projection) Utilise des algorithmes de mise en page graphique pour organiser les données dans
         un espace de faible dimension.
     \end{block}
     \makebox[\textwidth]{\includegraphics[width=0.6\textwidth]{img/UMAP.png}}
-
 \end{frame}
 \placelogotrue
 
@@ -369,14 +307,7 @@
 \end{frame}
 \placelogotrue
 
-
-
 \section{Analyse des résultats}
-\begin{frame}{Résultats}
-    \begin{block}{}
-        Afin d'illuster les résultats obtenu, nous prenons un exemple oû on entraine un modèle à deux couches cachées à reconnaitre des images de \textit{1} et de \textit{7}.
-    \end{block}
-\end{frame}
 
 \placelogofalse
 \begin{frame}{Résultats}
@@ -450,13 +381,14 @@
     \end{figure}
 \end{frame}
 
-\subsection{Conclusion}
+\section{Conclusion}
 \begin{frame}{Conclusion}
-    \begin{block}{}
-        Soit $n$ attributs de $A_1$ à $A_n$. On cherche à entraîner un modèle à classifier ces données en deux classes $C_1$ et $C_2$. Le modèle peut détecter des similarités entre les objets sur un attribut $A_i$ qui indique qu'il existe peut-être \textit{une corrélation}, mais pas forcément \textit{une causalité}, avec les deux classes $C_1$ et $C_2$. Ce qui mènera notre modèle à de possibles mauvaises classifications sur des données qu'il n'a jamais vues.
-    \end{block}
+    \begin{itemize}
+        \item Un outil de visualisation ;
+        \item Apports du projet ;
+        \item Perspective.
+    \end{itemize}
 \end{frame}
-
 
 \begin{frame}
     \begin{center}

@@ -2,6 +2,15 @@
 
 ## Introduction
 
+### Les réseaux de neurones
+
+Les réseaux de neurones sont une des méthodes d’apprentissage automatique utilisées en machine learning. Ils sont inspirés du fonctionnement d’un cerveau humain.
+
+### Boite noire
+
+Bien que les réseaux de neurones donnent de bons résultats généralement, leur structure leur donne un effet de boite noire. C'est-à-dire qu'ils permettent de donner des prédictions, mais sans pouvoir expliquer le raisonnement qui les a menés à ces dernières.
+
+
 ### Problèmatique
 
 Comme l'a dit mon collègue, les réseaux de neurones agissent à la façon d'une boite noire. Aucune information n'est fournit sur son raisonnement. L'objectif de notre projet est donc d'esseyer de comprendre ce qui se passe à l'interieur de cette fameuse boite noire. Concrètement, il s’agit de repérer, selon les données d’entrée, des signatures d’activation de neurones. Une signature correspond au pattern (ou chemin) emprunté par un objet au sein du réseau avant d’arriver à une conclusion. On veut donc analyser les différentes signatures obtenues par différents types de données et de modèles.
@@ -24,15 +33,47 @@ Afin d'arriver à répondre à ces questions, nous devons tout d'abord prendre e
 
 ??
 
+SHAKIB
 ## Analyse des données
 
-SHAKIB
+### Jeu de donnée
+
+### Seléction
+
+### Prétraitement
+
+#### Scaling
+
+#### Flattening
+
+#### one hot encoding
+
+L'encodage one-hot ou encodage 1 parmi n consiste à encoder une variable à n états sur n bits dont un seul prend la valeur 1, le numéro du bit valant 1 étant le numéro de l'état pris par la variable. 
 
 ## Dev de l'architecture
 
 ### technologies utilisées 
 
 MIZOU
+
+#### Jupyter
+
+Les notebooks Jupyter offrent un excellent moyen d’écrire et d’itérer sur du code Python.
+C’est un outil incroyablement puissant pour développer et présenter de manière interactive des projets de science de données.
+
+Jupyter notebook intègre le code et sa sortie dans un document unique qui combine des visualisations, du texte, des équations mathématiques et d’autres médias riches.
+
+#### TensorFlow & Keras
+
+Initialement créé par l’équipe Google Brain à des fins internes, telles que le filtrage du spam sur Gmail, il est devenu open-source en 2015.
+
+Tensorflow est souvent utilisé pour résoudre des problèmes d’apprentissage profond et pour la formation et l’évaluation des processus jusqu’au déploiement du modèle.
+
+Keras est une API de réseau neuronal open source écrite en Python. Il peut fonctionner sur plusieurs frameworks d’apprentissage en profondeur et d’apprentissage automatique.
+
+#### Voilà
+
+
 
 ### Modèles d'apprentissage
 
@@ -44,27 +85,15 @@ Avant toute chose, il nous faut commencer par définir un réseau de neurones. N
 
 Nous avons choisi de commencer par utiliser un réseau à maillage dense et avec des paramètres de base. Ceci afin de simplifier, dans un premier temps, les expérimentations. Un réseau à maillage dense est un réseau tel que chaque neurone d’une couche est relié à tous les neurones de la couche précédente et de la couche suivante, comme vous le voyer dans cette figure.
 
----- CHANGEMENE diapi ----
+Pour savoir ce qui se passe au milieu on a extrait les output de chaque couche cachées afin de voir à quoi ils ressemblent. Pour ça nous utilisant un algoritheme de clustring, le K-means. Ce dernier prend en paramètres les données et un certain K donnée par l’utilisateur, puis construit K clusters qui regroupent les données qui sont proches, comme illustré sur cette figure.
 
-Puis dans un deuxième temps, nous pourrons changer de modèle afin de passer à un réseau de neurones à convolution 1 (ou CNN). Ils consistent en un empilage multicouche de perceptrons, dont le but est de prétraiter de petites quantités d’informations. Les réseaux neuronaux convolutifs ont de larges applications dans la reconnaissance d’image et de vidéo.
-
----- CHANGEMENE diapi ----
-
-Nous avons vaguement parlé des signatures dans l'introduction de cette présentation. Concrétement, soit un réseau à N couches cachées, La signature S d’une image qui travesent ce réseau, se définit ainsi : S = (H 1 , ..., H N ), avec H i est le vecteur contenant les valeurs de chaque neurone de la couche i.
-
-Si on prend en exemeple cette figure, la signature d'une image sera un vecteur contenant les valeurs des 128 neurones de cette couche cachée.
-
----- CHANGEMENE diapi ----
-
-Une fois la signature des images extraite, nous passons à l’analyse de ces dernières. Pour cela, nous utilisant un algorithme de clustering, le K-means. Ce dernier prend en paramètres les données et un certain K donnée par l’utilisateur, puis construit K clusters qui regroupent les données qui sont proches, comme illustré sur cette figure.
-
-Par contre, le K doit être 
-
----- CHANGEMENE diapi ----
-
-
+Par contre, et vu le fonctionnement de K-means, le K ne peut être choisi automatiquement par l'algorithme. Nous passons donc par une méthode qui permet d'évaluer (une façon de donner une note) un clustering. C'est la méthode Silhouette. Comme on peut voir dans ce figure, on voit que le score silhouette est maximal pour la valuer k = 3. Donc il sera optimal de choisir cette valeur.
 
 ## Analyse des résultats
+
+### Changement de compertement
+
+En plus, notre solution montre que l'architecture choisi n'est pas optimal et que la deuxième couche ne sert à rien. On pourra donc l'otimiser afin d'utiliser qu'une seule couche.
 
 ### Conclusion
 
