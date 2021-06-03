@@ -37,12 +37,38 @@ CHAKIB
 
 ## Organisation 
 
-??
+Maintenant, on va parler de l'organisation du projet. nous avons commencé par essayer de prendre en mains les outils nécéssaires  la réalisation du projet, on essayé aussi de savoir comment fonctionne les réseaux de neurones, d'ailleurs le thème de notre prmière réunions avec monsieur Pascal POncelet était sur le fonctionnement des réseaux de neurones. 
+
+Nous avons également choisi les outils de travail collaboratifs et les principales
+technologies utilisées.
+
+après cela, on a decoupé la réalisation de notre projet en 3 grandes parties. 
+
+Premièrement, l'analyse des données, Durant cette étape, nous nous sommes concentrés sur l’analyse des données que nous allions
+utiliser. Notamment l’étude de leur structure ainsi que la définition des différents outils utiles pour
+leur manipulation.
+
+Ensuite on est passée à la phase de developpement de l'architecture, ça a consisté en l'implementation de plusieurs modèles d’apprentissage
+automatique, les outils d’extraction des informations internes aux modèles ainsi que les interfaces
+de visualisation des résultats.
+
+Et en dernier on a commencé à annlyser les résultats et c'était un petit peu en parallele avec le developpement de l'architecture. durant cette étape on a effectuer plusieurs expérimentations pour pouvoir en tirer de conclusions et essayer de répondre au question posées lors de la problématique.
+
+Et au final nous avons consacré notre temps à la rédaction du rapport.
+
+Commencons maintenant par l'analyse des données, 
+
+MNIST est un ensemble de données étiqueté qui associe des images de chiffres écrits à la main
+avec la valeur du chiffre respectif. Elle contient 70 000 images en noir et blanc de 28 x 28 pixels
+représentant des chiffres de zéro à neuf. Chaque pixel de l’image est un entier de valeur comprise
+entre 0 et 255 représentant le niveau de gris.
 
 SHAKIB
 ## Analyse des données
 
 ### Jeu de donnée
+
+
 
 ### Seléction
 
