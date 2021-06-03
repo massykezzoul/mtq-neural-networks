@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Messieurs les **JURY**, bonjour à tous. Tous d'abord nous vous remercions pour votre présence et toute l'attention que vous allez accorder à notre présentation. Notre groupe se nomme **MTQ** et composé de Bouzidi Belkassim, Elhouiti Chakib et moi même Kezzoul Massili. Pour une partie du projet, il y avais aussi deux autres membres (Dadi Mélissa et Zeroual Ramzi). Mais ils n'ont malheuresement pas pu terminer le projet avec nous et qui n'ont pas pu être présent ajourd'hui avec nous. Ils enverront un e-mail aux responsables du TER expliquant leur situation. Parenthèse faite, Notre sujet s'intitule "Chemins spécifiques pour la classification dans
+Bonjour Messieurs. Tous d'abord nous vous remercions pour votre présence et toute l'attention que vous allez accorder à notre présentation. Notre groupe se nomme **MTQ** et composé de Bouzidi Belkassim, Elhouiti Chakib et moi même Kezzoul Massili. Pour une partie du projet, il y avais aussi deux autres membres (Dadi Mélissa et Zeroual Ramzi). Mais ils n'ont malheuresement pas pu terminer le projet avec nous et qui n'ont pas pu être présent ajourd'hui avec nous. Ils enverront un e-mail aux responsables du TER expliquant leur situation. Parenthèse faite, Notre sujet s'intitule "Chemins spécifiques pour la classification dans
 les réseaux de neurones profonds". Je laisse maintenant M. Bouzidi prendre la parole.
 
 -- MIZOU --
@@ -30,7 +30,7 @@ voir diapo
 ---- changement de diapo ----
 ### Solution
 
-Afin d'arriver à répondre à ces questions, nous devons tout d'abord prendre en main les outils de création de réseaux de neurones et se familiariser avec la base de données MNIST. Une fois le réseau créer et entraîner, nous allons récuperer les sortie des couches cachées. Puis nous passerons à l'extraction des signatures dont nous venons de parler. Pour cela, nous utiliserons des algorithmes de clustering. Enfin, avant d'analyser les résultat, nous allons réaliser des interfaces de visualtions en utlisant différentes techniques que nous allons détailler un peu plus loin.
+Afin d'arriver à répondre à ces questions, nous devons tout d'abord prendre en main les outils de création de réseaux de neurones. Une fois le réseau créer et entraîner, nous allons récuperer les sortie des couches cachées. Puis nous passerons à l'extraction des signatures dont nous venons de parler. Pour cela, nous utiliserons des algorithmes de clustering. Enfin, avant d'analyser les résultat, nous allons réaliser des interfaces de visualtions en utlisant différentes techniques que nous allons détailler un peu plus loin.
 
 ---- changement de diapo ----
 CHAKIB
@@ -109,7 +109,7 @@ Keras est une API de réseau neuronal open source écrite en Python. Il peut fon
 -- MASSY --
 ### Modèles d'apprentissage
 
-Avant toute chose, il nous faut commencer par programmer un réseau de neurones. En utilisant Keras, nous avons définit un réseau à 4 couches. Donc on a la couche d'entré suivit de la première couche chaché avec 32 neurones, puis la deuxième couche cachée avec 64 neurones et enfin la couche de sortie. On utilisé une structure de couche qu'on appelle 'Dense'. C'est une structure ou tout les neurones sont connectés avec tout les neurones autour d'eux. Il y'en a d'autres possibles mais on a utilisé la plus simple.
+Avant toute chose, il nous faut commencer par programmer un réseau de neurones. En utilisant Keras, nous avons définit un réseau à 4 couches. Donc on a la couche d'entré suivit de la première couche chaché avec 32 neurones, puis la deuxième couche cachée avec 64 neurones et enfin la couche de sortie. On a utilisé une structure de couche qu'on appelle 'Dense'. C'est une structure ou tout les neurones sont connectés avec tout les neurones autour d'eux. Il y'en a d'autres possibles mais on a utilisé la plus simple.
 
 Une fois le modèle créer et entraîner. On a extrait les output de chaque couche cachées. 
 
@@ -143,3 +143,5 @@ Nous avons insèrer des images de 3 et on obtient différents résultats. On voi
 
 ## Conclusion
 
+- outils de visualisation
+- 
